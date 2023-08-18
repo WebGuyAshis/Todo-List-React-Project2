@@ -1,0 +1,52 @@
+.home-page{
+    background-color: rgb(13, 35, 56);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+/* Welcome Text */
+.wel-text{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+}
+.wel-heading{
+    font-size: 4rem;
+    color: rgb(232, 232, 232);
+    margin: 0;
+}
+.wel-heading div{
+    color: rgb(0, 195, 255);
+}
+
+/* Get Started Button! */
+.sign-up-btn{
+    background-color: rgb(255, 65, 138);
+    width: 150px;
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px 0;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color: rgb(232, 232, 232);
+    cursor: pointer;
+}
+.wel-quote{
+    font-size: 1rem;
+    color: rgb(131, 131, 131);
+}
+
+/* Welcome Page Logo */
+.wel-page-img{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-image: url('../../assets/images/todo.png');
+    background-position: center;
+    background-size: cover;
+}
+/* .wel-page-img img{
+    width: 100%;
+} */
