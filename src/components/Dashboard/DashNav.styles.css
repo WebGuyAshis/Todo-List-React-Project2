@@ -1,0 +1,63 @@
+.dash-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dash-logo{
+display: flex;
+align-items: center;
+font-size: 2rem;
+margin-left: 40px;
+}
+.dash-logo span{
+color: rgb(252, 19, 97);
+}
+.dash-logo img{
+    height: 50px;
+}    
+
+/* dashboard Tasks Toggler */
+.dash-tasks-togg{
+    display: flex;
+    background-color: rgb(212, 212, 212);
+    width: 300px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.dash-tog-btn{
+    width: 150px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: 500;
+}
+
+.active-toggle{
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+
+/* User Account */
+.user-account{
+    display: flex;
+    margin-right: 40px;
+    align-items: center;
+    background-color: rgb(219, 219, 219);
+    border-radius: 40px;
+}
+
+.user-img{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: rgb(84, 192, 255);
+}
+
+.user-name{
+    margin:0 10px;
+    font-weight: 500;
+}

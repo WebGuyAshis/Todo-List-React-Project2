@@ -1,21 +1,21 @@
 import React from "react";
 import './Navbar.styles.css'
+import { Link } from "react-router-dom";
 
 const Navbar = ()=>{
-    let navItems = ['Home', 'About', 'Contact']
     return(
         <nav>
             <div className="logo">
                 todo<span>List</span>
             </div>
 
-            <ul className="nav-list">
-                {navItems.map((items, index)=>{
-                    return(
-                        <li className="nav-lsit-items" key={index}>{items}</li>
-                    )
-                })}
-            </ul>
+            <div className="nav-list">
+                <Link className="nav-list-item" to='/'>Home</Link>
+                <Link className="nav-list-item" to='/dashboard'>Dashboard</Link>
+                <Link className="nav-list-item" to='/'>About</Link>
+                <Link className="nav-list-item" to='/'>Contact</Link>
+
+            </div>
 
             <div className="auth-btn">
             <div className="sign-up">

@@ -1,5 +1,5 @@
 .home-page{
-    background-color: rgb(13, 35, 56);
+    background-color: rgb(9, 29, 47);
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -43,9 +43,11 @@
     flex: 1;
     display: flex;
     align-items: center;
-    background-image: url('../../assets/images/todo.png');
+    background-image: url('../../assets/images/todo1.svg');
     background-position: center;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 20px;
 }
 /* .wel-page-img img{
     width: 100%;
