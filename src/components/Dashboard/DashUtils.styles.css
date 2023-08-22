@@ -1,0 +1,32 @@
+.dash-utils{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(200, 200, 200);
+    width: 45px;
+    overflow: hidden;
+    border-radius: 35px;
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    gap: 10px;
+}
+
+.util-item{
+    height: 45px;
+    border-radius: 50%;
+    width: 45px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.util-item:hover{
+    background-color: rgb(11, 162, 255);
+
+}
+.util-item img{
+    height: 30px;
+    width: 30px;
+}
