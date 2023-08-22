@@ -5,11 +5,12 @@
     width: 45px;
     overflow: hidden;
     border-radius: 35px;
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 40px;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
     gap: 10px;
+    margin-left: 40px;
 }
 
 .util-item{

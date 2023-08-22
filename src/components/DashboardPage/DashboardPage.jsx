@@ -1,15 +1,15 @@
 import React from "react";
-import './Dashboard.styles.css'
+import './DashboardPage.styles.css'
 import DashNav from "./DashNav";
 import DashUtils from "./DashUtils";
 
-const Dashboard = () =>{
+const DashboardPage = () =>{
     return(
-        <div className="dashboard-container"> 
+        <div className="dashboard-page"> 
             <DashNav/>
             <DashUtils/>
         </div>
     )
 }
 
-export default Dashboard;
+export default DashboardPage;
