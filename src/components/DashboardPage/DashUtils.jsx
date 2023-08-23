@@ -12,7 +12,7 @@ import Add from "../../assets/svg/add.svg";
 
 const DashUtils = () => {
   return (
-    <div className="dash-utils">
+    <div className="dash-utils light-glass">
       <Link className="util-item" to="">
         <img src={User} alt="" />
       </Link>

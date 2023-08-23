@@ -14,12 +14,12 @@ const DashNav = ()=>{
             </div>
 
             {/* Dash/Tasks Toggler */}
-            <div className="dash-tasks-togg">
+            <div className="dash-tasks-togg light-glass">
                 <Link className="dash-tog-btn dash-btn" to='/tasksDash'>Dashboard</Link>
                 <Link className="dash-tog-btn tasks-btn active-toggle" to='/listTasks'>Tasks</Link>
             </div>
 
-            <div className="user-account-name">
+            <div className="user-account-name light-glass">
                 <div className="user-img">
                 <img className="user-img" src={userImg} alt="" />
                 </div>

@@ -5,8 +5,8 @@ import plus from '../../assets/svg/plus.svg'
 
 const TasksContainer = () => {
   return (
-    <div className="tasks-main-container">
-        <div className="tasks-category">
+    <div className="tasks-main-container light-glass">
+        <div className="tasks-category light-glass">
             <Link className="tasks-category-item active-item" to="/">
                 All
             </Link>
@@ -29,7 +29,7 @@ const TasksContainer = () => {
                 <div className="date">August 23, 2023</div>
             </div>
 
-            <div className="pen-comp-toggler">
+            <div className="pen-comp-toggler light-glass">
                 <Link className="pending-btn active-item" to="/">
                     Pending
                 </Link>

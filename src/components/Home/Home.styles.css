@@ -1,8 +1,11 @@
 .home-page{
-    background-color: rgb(9, 29, 47);
+    /* background-color: rgb(3, 20, 36); */
     display: flex;
     width: 100vw;
     height: 100vh;
+    /* background-image: url('../../assets/images/dippyaman-nath-WTjoXtFZ2fw-unsplash.jpg'); */
+    /* background-size: cover; */
+
 }
 /* Welcome Text */
 .wel-text{
@@ -43,7 +46,7 @@
     flex: 1;
     display: flex;
     align-items: center;
-    background-image: url('../../assets/images/todo1.svg');
+    background-image: url('../../assets/images/todo.png');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;

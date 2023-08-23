@@ -1,6 +1,6 @@
 .tasks-main-container{
     /* width: 60%; */
-    background-color: rgb(208, 208, 208);
+    /* background-color: rgb(208, 208, 208); */
     height: calc(100% - 14vh);
     border-radius: 20px;
     display: flex;
@@ -10,11 +10,7 @@
     padding: 0 40px;
     flex: 1;
 }
-
-/* tasks-category */
 .tasks-category{
-    /* height: 35px; */
-    background-color: rgb(227, 227, 227);
     height: 35px;
     border-radius: 35px;
     width: 400px;
@@ -23,8 +19,6 @@
     margin-top: 20px;
 }
 .tasks-category-item{
-    /* width: 100px; */
-    /* background-color: aqua; */
     width: 80px;
     height: 35px;
     border-radius: 35px;
@@ -55,7 +49,7 @@
 /* Toggler */
 .pen-comp-toggler{
     height: 35px;
-    background-color: rgb(224, 224, 224);
+    /* background-color: rgb(224, 224, 224); */
     border-radius: 35px;
     display: flex;
 }
@@ -100,7 +94,7 @@
 }
 
 .tasks-container{
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     height: 100%;
     width: 100%;
     border-radius: 20px;

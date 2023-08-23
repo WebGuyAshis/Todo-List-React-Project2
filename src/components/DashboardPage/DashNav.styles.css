@@ -23,7 +23,7 @@ color: rgb(252, 19, 97);
 /* dashboard Tasks Toggler */
 .dash-tasks-togg{
     display: flex;
-    background-color: rgb(212, 212, 212);
+    /* background-color: rgb(212, 212, 212); */
     width: 300px;
     height: 35px;
     border-radius: 35px;
@@ -50,7 +50,7 @@ color: rgb(252, 19, 97);
     display: flex;
     margin-right: 40px;
     align-items: center;
-    background-color: rgb(219, 219, 219);
+    /* background-color: rgb(219, 219, 219); */
     border-radius: 40px;
 }
 

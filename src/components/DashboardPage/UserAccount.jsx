@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const UserAccount = () =>{
     return(
-        <div className="user-account-container">
+        <div className="user-account-container light-glass">
             <div className="user-image">
                 <img src={userImg} alt="" />
             </div>
-            <div className="user-profile-name">
+            <div className="user-profile-name light-glass">
                     Hi, Ashis
             </div>
             <div className="notification-container">

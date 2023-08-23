@@ -1,6 +1,6 @@
 .user-account-container{
     width: 300px;
-    background-color: rgb(206, 206, 206);
+    /* background-color: rgb(206, 206, 206); */
     height: calc(100% - 14vh);
     border-radius: 20px;
     margin-right: 40px;
@@ -29,7 +29,6 @@
 
 .user-profile-name{
     padding: 5px 15px;
-    background-color: rgb(165, 165, 165);
     border-radius: 40px;
     margin-top: 10px;
 }
