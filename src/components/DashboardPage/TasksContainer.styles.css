@@ -1,0 +1,132 @@
+.tasks-main-container{
+    width: 60%;
+    background-color: rgb(208, 208, 208);
+    height: calc(100% - 14vh);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 40px;
+}
+
+/* tasks-category */
+.tasks-category{
+    /* height: 35px; */
+    background-color: rgb(227, 227, 227);
+    height: 35px;
+    border-radius: 35px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.tasks-category-item{
+    /* width: 100px; */
+    /* background-color: aqua; */
+    width: 80px;
+    height: 35px;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+
+/* container-header */
+
+.container-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.heading-tasks{
+    font-size: 40px;
+}
+.date{
+    font-size: 15px;
+}
+
+/* Toggler */
+.pen-comp-toggler{
+    height: 35px;
+    background-color: rgb(224, 224, 224);
+    border-radius: 35px;
+    display: flex;
+}
+.complete-btn, .pending-btn{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 35px;
+    color: black;
+}
+
+/* Search Container */
+.search-container{
+    width: 100%;
+    display: flex;
+    padding: 0 40px;
+    height: 35px;
+    margin-top: 20px;
+    gap: 20px;
+}
+.search-bar{
+    flex: 1;
+    outline: none;
+    border: none;
+    padding-left: 20px;
+    border-radius: 35px;
+    font-size: 18px;
+    height: 35px;
+}
+
+.search-container span{
+    width: 100px;
+    background-color: rgb(14, 175, 255);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 35px;
+    cursor: pointer;
+}
+
+.tasks-container{
+    background-color: aliceblue;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    margin: 30px 40px 40px 40px;
+    overflow-x: hidden;
+    /* overflow-y: scroll; */
+    position: relative;
+}
+.add-tasks{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    height: 50px;
+    width: 50px;
+    background-color: rgb(255, 40, 76);
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-tasks img{
+    height: 80%;
+    width: 80%;
+    cursor: pointer;
+}
+.active-item{
+    background-color: rgb(0, 174, 255);
+    color: white;
+}
+
