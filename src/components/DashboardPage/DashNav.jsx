@@ -19,7 +19,7 @@ const DashNav = ()=>{
                 <Link className="dash-tog-btn tasks-btn active-toggle" to='/listTasks'>Tasks</Link>
             </div>
 
-            <div className="user-account">
+            <div className="user-account-name">
                 <div className="user-img">
                 <img className="user-img" src={userImg} alt="" />
                 </div>

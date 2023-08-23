@@ -46,7 +46,7 @@ color: rgb(252, 19, 97);
 }
 
 /* User Account */
-.user-account{
+.user-account-name{
     display: flex;
     margin-right: 40px;
     align-items: center;

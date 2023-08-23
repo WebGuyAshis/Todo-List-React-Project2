@@ -3,6 +3,7 @@ import './DashboardPage.styles.css'
 import DashNav from "./DashNav";
 import DashUtils from "./DashUtils";
 import TasksContainer from "./TasksContainer";
+import UserAccount from "./UserAccount";
 
 const DashboardPage = () =>{
     return(
@@ -10,6 +11,7 @@ const DashboardPage = () =>{
             <DashNav/>
             <DashUtils/>
             <TasksContainer/>
+            <UserAccount/>
         </div>
     )
 }

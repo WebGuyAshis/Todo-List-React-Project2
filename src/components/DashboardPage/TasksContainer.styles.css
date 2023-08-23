@@ -1,5 +1,5 @@
 .tasks-main-container{
-    width: 60%;
+    /* width: 60%; */
     background-color: rgb(208, 208, 208);
     height: calc(100% - 14vh);
     border-radius: 20px;
@@ -8,6 +8,7 @@
     align-items: center;
     box-sizing: border-box;
     padding: 0 40px;
+    flex: 1;
 }
 
 /* tasks-category */
