@@ -1,6 +1,6 @@
 import React from "react";
 import './UserAccount.styles.css'
-import userImg from '../../assets/images/userImg.png'
+import userImg from '../../../assets/images/userImg.png'
 import { Link } from "react-router-dom";
 
 const UserAccount = () =>{

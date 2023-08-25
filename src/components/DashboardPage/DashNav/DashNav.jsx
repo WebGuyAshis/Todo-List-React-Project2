@@ -1,8 +1,8 @@
 import React from "react";
 import './DashNav.styles.css'
-import logoDash from '../../assets/images/logoDash.png'
+import logoDash from '../../../assets/images/logoDash.png'
 import { Link } from "react-router-dom";
-import userImg from '../../assets/images/userImg.png'
+import userImg from '../../../assets/images/userImg.png'
 
 const DashNav = ()=>{
     return (

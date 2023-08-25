@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./DashUtils.styles.css";
-import User from "../../assets/svg/profile.svg";
-import Task from "../../assets/svg/list.svg";
-import Birthday from "../../assets/svg/birthday.svg";
-import Imp from "../../assets/svg/star.svg";
-import Add from "../../assets/svg/add.svg";
+import User from "../../../assets/svg/profile.svg";
+import Task from "../../../assets/svg/list.svg";
+import Birthday from "../../../assets/svg/birthday.svg";
+import Imp from "../../../assets/svg/star.svg";
+import Add from "../../../assets/svg/add.svg";
 
 // import { ThemeContext } from '@mui/system';
 // import PlaylistAddCheckOutlinedIcon from '@mui/icons-material/PlaylistAddCheckOutlined';

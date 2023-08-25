@@ -1,5 +1,5 @@
 .tasks-main-container{
-    /* width: 60%; */
+    width: 60%;
     /* background-color: rgb(208, 208, 208); */
     height: calc(100% - 14vh);
     border-radius: 20px;
@@ -97,7 +97,7 @@
     /* background-color: aliceblue; */
     height: 100%;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 30px 40px 40px 40px;
     overflow-x: hidden;
     /* overflow-y: scroll; */
@@ -109,7 +109,7 @@
     right: 20px;
     height: 50px;
     width: 50px;
-    background-color: rgb(255, 40, 76);
+    background-color: rgb(14, 175, 255);
     border-radius:50%;
     display: flex;
     justify-content: center;

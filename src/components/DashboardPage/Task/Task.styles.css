@@ -1,0 +1,71 @@
+.task:nth-child(odd) {
+    --primary-color: #ff456a;
+}
+.task:nth-child(even) {
+  --primary-color:rgb(41, 151, 255);
+}
+.task {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  box-sizing: border-box;
+  /* padding: 8px; */
+  height: 70px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border-left: 10px solid var(--primary-color); */
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.task:hover{
+    background-color: white;
+    transition: all 0.3s;
+}
+
+
+.task-description {
+  width: 50%;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+/* .task-desc {
+display: flex;
+} */
+.task-heading {
+  font-weight: 600;
+  color:var(--primary-color);
+  font-size: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.task-category {
+  padding: 7px 15px;
+  border-radius: 30px;
+  background-color:var(--primary-color);
+  color: aliceblue;
+}
+.tasktimer {
+  margin-top: 8px;
+  color: black;
+}
+.destroy-task{
+  background-color: #FF6767;
+  /* border-radius: 40px; */
+  /* padding: 10px 20px; */
+  height: 100%;
+}
+
+input[type="Checkbox"]{
+  display: block;
+  margin-right: 10px;
+  min-width: 20px;
+  min-height: 20px;
+  accent-color: var(--primary-color);
+}
+

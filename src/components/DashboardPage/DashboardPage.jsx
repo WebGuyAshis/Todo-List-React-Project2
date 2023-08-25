@@ -1,8 +1,8 @@
 import React from "react";
 import './DashboardPage.styles.css'
-import DashNav from "./DashNav";
-import DashUtils from "./DashUtils";
-import TasksContainer from "./TasksContainer";
+import DashNav from "./DashNav/DashNav";
+import DashUtils from "./DashUtils/DashUtils";
+import TasksContainer from "./TasksContainer/TasksContainer";
 import UserAccount from "./UserAccount";
 
 const DashboardPage = () =>{

@@ -1,7 +1,8 @@
 import React from "react";
 import "./TasksContainer.styles.css";
 import { Link } from "react-router-dom";
-import plus from '../../assets/svg/plus.svg'
+import plus from '../../../assets/svg/plus.svg'
+import Task from "../Task";
 
 const TasksContainer = () => {
   return (
@@ -44,11 +45,17 @@ const TasksContainer = () => {
         </div>
 
         <div className="tasks-container">
-            
+            <Task/>
+            <Task/>
+            <Task/>
+            <Task/>
+            <Task/>
+            <Task/>
+            <Task/>
+        </div>
           <div className="add-tasks">
             <img src={plus} alt="" />
           </div>
-        </div>
     </div>
   );
 };
