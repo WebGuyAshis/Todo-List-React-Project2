@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "./TasksContainer.styles.css";
 import { Link } from "react-router-dom";
 import plus from '../../../assets/svg/plus.svg'
 import Task from "../Task";
 
 const TasksContainer = () => {
+
+    const [tasks, setTasks] = useState([]);
+
+useEffect(() => {
+fetch('https://jsonplaceholder.typicode.com/todos')
+.then(response=>{
+    return response.json();
+})
+.then(data=>{
+    console.log("Data:", data);
+    setTasks(data);
+})
+.catch(err=>{
+    console.log("Error Fetching Tasks!");
+})
+}, [])
+
+console.log("Tasks:", tasks);
   return (
     <div className="tasks-main-container light-glass">
         <div className="tasks-category light-glass">
@@ -45,13 +63,9 @@ const TasksContainer = () => {
         </div>
 
         <div className="tasks-container">
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
-            <Task/>
+            {tasks.map((task,index)=>{
+                return <Task key={index} value ={task}/>
+            })}
         </div>
           <div className="add-tasks">
             <img src={plus} alt="" />

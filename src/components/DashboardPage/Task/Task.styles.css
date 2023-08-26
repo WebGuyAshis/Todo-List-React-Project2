@@ -28,37 +28,43 @@
 
 .task-description {
   width: 50%;
+  /* background-color: burlywood; */
   margin-left: 10px;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 /* .task-desc {
 display: flex;
 } */
 .task-heading {
+  /* width: 100%; */
   font-weight: 600;
   color:var(--primary-color);
   font-size: 18px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  /* background-color: aqua; */
 }
 
 .task-category {
   padding: 7px 15px;
   border-radius: 30px;
   background-color:var(--primary-color);
-  color: aliceblue;
+  color: aliceblue;  
 }
 .tasktimer {
   margin-top: 8px;
   color: black;
 }
 .destroy-task{
-  background-color: #FF6767;
+  background-color: #ff3131;
   /* border-radius: 40px; */
   /* padding: 10px 20px; */
   height: 100%;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
 input[type="Checkbox"]{
