@@ -58,9 +58,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
     border-radius: 35px;
-    color: black;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 /* Search Container */
@@ -100,7 +100,6 @@
     border-radius: 10px;
     margin: 30px 40px 40px 40px;
     overflow-x: hidden;
-    /* overflow-y: scroll; */
     position: relative;
 }
 .add-tasks{
