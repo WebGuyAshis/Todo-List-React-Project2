@@ -13,7 +13,7 @@ const UserAccount = () =>{
                     Hi, Ashis
             </div>
             <div className="notification-container">
-                <div class="notification-heading">
+                <div className="notification-heading">
                     Notifications 
                 </div>
                 <div className="notification-box">

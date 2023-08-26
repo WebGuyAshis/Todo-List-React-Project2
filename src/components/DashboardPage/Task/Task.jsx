@@ -9,7 +9,6 @@ const Task = (props) => {
   const handleCheckbox = ()=>{
     setIsChecked(!isChecked);
   }
-  console.log("Props:", props);
   return (
     <div className="task">
       <div className="task-description">

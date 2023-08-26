@@ -32,12 +32,12 @@ color: rgb(252, 19, 97);
 .dash-tog-btn{
     width: 150px;
     border-radius: 30px;
-    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
     font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s all;
 }
 
 .active-toggle{
