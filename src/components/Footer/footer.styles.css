@@ -1,0 +1,21 @@
+.footer-container{
+    height: 7vh;
+    min-height: 20px;
+    /* background-color: rgb(222, 222, 222, 0.5); */
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-heading{
+    background-color: rgb(234, 234, 234,0.5);
+    border-radius: 35px;
+    height: 35px;
+    padding: 5px 15px;
+    cursor: pointer;
+}

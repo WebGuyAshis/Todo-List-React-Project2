@@ -118,7 +118,7 @@ function PieChartComponent(props) {
   
 
   return (
-    <div id="chartdiv" style={{ width: "100%", height: "80%" }}></div>
+    <div id="chartdiv" style={{ width: "100%", height: "100%"}}></div>
   );
 }
 export default PieChartComponent;

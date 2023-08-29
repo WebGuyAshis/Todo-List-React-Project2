@@ -12,13 +12,12 @@ display: flex;
 align-items: center;
 font-size: 2rem;
 margin-left: 40px;
+color: aliceblue;
+width: 100px;
 }
 .dash-logo span{
 color: rgb(252, 19, 97);
-}
-.dash-logo img{
-    height: 50px;
-}    
+}   
 
 /* dashboard Tasks Toggler */
 .dash-tasks-togg{

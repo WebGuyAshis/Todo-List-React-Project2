@@ -61,7 +61,11 @@
     border-radius: 10px;
     width: 100%;
     margin-top: 10px;
-    height: 80px;
+    /* height: 80px; */
+    padding: 10px;
+}
+.notifications p{
+    font-size: 12px;
 }
 .logout{
     padding: 8px 20px;

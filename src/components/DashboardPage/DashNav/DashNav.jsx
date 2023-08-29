@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "./DashNav.styles.css";
-import logoDash from "../../../assets/images/logoDash.png";
 import userImg from "../../../assets/images/userImg.png";
 import { DashContext } from "../DashboardPage";
 
@@ -19,7 +18,6 @@ const DashNav = () => {
     <div className="dash-nav">
       {/* Dashboard Logo */}
       <div className="dash-logo">
-        <img src={logoDash} alt="" />
         todo<span>List</span>
       </div>
 
