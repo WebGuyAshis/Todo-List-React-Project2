@@ -43,9 +43,6 @@ const TasksContainer = () => {
           Work
         </Link>
         <Link className="tasks-category-item" to="/">
-          School
-        </Link>
-        <Link className="tasks-category-item" to="/">
           Events
         </Link>
       </div>
@@ -76,24 +73,18 @@ const TasksContainer = () => {
       </div>
 
       <div className="tasks-container">
-        {/* {tasks.map((task,index)=>{
-                return <Task key={index} value ={task}/>
-            })} */}
-
-{
-  isCompletedTab
-    ? tasks
-        .filter(task => task.completed === true)
-        .map((task, index) => {
-          return <Task key={index} value={task} />;
-        })
-    : tasks
-        .filter(task => task.completed === false)
-        .map((task, index) => {
-          return <Task key={index} value={task} />;
-        })
-}
-
+        {/* Conditional rendering for pending and completed tasks */}
+        {isCompletedTab
+          ? tasks
+              .filter((task) => task.completed === true)
+              .map((task, index) => {
+                return <Task key={index} value={task} />;
+              })
+          : tasks
+              .filter((task) => task.completed === false)
+              .map((task, index) => {
+                return <Task key={index} value={task} />;
+              })}
       </div>
       <div className="add-tasks">
         <img src={plus} alt="" />

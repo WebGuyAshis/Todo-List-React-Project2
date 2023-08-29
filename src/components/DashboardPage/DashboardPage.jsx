@@ -1,7 +1,6 @@
 import React, { useState, createContext} from "react";
 import './DashboardPage.styles.css'
 import DashNav from "./DashNav/DashNav";
-import DashUtils from "./DashUtils/DashUtils";
 import DashboardContainer from "./DashboardContainer";
 import TasksContainer from "./TasksContainer";
 import UserAccount from "./UserAccount";
@@ -16,10 +15,6 @@ const DashboardPage = () =>{
         <DashContext.Provider value={{isDash,setIsDash}}>
             <div className="dashboard-page"> 
             <DashNav/>
-            <DashUtils/>
-            {/* <TasksContainer/> */}
-            {/* <DashboardContainer/> */}
-            {/* {page} */}
             {isDash ?<DashboardContainer/>:<TasksContainer/> }
             <UserAccount/>
         </div>
