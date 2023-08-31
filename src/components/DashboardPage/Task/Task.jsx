@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 import "./Task.styles.css";
 
+
+
 const Task = (props) => {
-  console.log("Props:", props.value.completed);
   const [isChecked, setIsChecked] = useState(props.value.completed);
 
   const handleCheckbox = ()=>{
@@ -14,6 +15,7 @@ const Task = (props) => {
   useEffect(()=>{
     setIsChecked(props.value.completed)
   },[props.value.completed]);
+
   return (
     <div className="task">
       <div className="task-description">
