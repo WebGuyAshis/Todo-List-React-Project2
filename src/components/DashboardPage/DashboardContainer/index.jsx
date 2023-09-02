@@ -1,18 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./dashboardContainer.styles.css";
 import PieChartComponent from "./Pie";
 import { FetchedContext } from "../../../App";
 
 const DashboardContainer = () => {
-  const {tasks, setTasks, pending, completed} = useContext(FetchedContext);
-
-//  useEffect(()=>{
-//   if(tasks){
-//     setTotal(tasks.length);
-//   }
-//  }, [tasks]);
-
-
+  const {tasks, pending, completed} = useContext(FetchedContext);
 
   console.log("Inside dashboard Container ");
   return (

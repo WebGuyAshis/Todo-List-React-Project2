@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import DashboardPage from "./components/DashboardPage";
@@ -7,7 +7,8 @@ import React from "react";
 
 const FetchedContext = createContext();
 function App() {
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
+  console.log("Tasks of States:",tasks);
 
   const setDataToLocalStorage = (data) => {
     localStorage.setItem("tasks", JSON.stringify(data));
@@ -20,6 +21,7 @@ function App() {
           "https://jsonplaceholder.typicode.com/todos"
         );
         const data = await response.json();
+        console.log("Data From API:", data);
         setTasks(data);
         setDataToLocalStorage(data);
       } catch (error) {
@@ -46,8 +48,8 @@ function App() {
       setCompleted(completed);
       setPending(pending);
 
-      console.log("Pending:",pending);
-      console.log("Completed:", completed);
+      // console.log("Pending:",pending);
+      // console.log("Completed:", completed);
     }
   }, [tasks]);
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./TasksContainer.styles.css";
 import { Link } from "react-router-dom";
 import plus from "../../../assets/svg/plus.svg";
@@ -7,7 +7,38 @@ import { FetchedContext } from "../../../App";
 
 
 const TasksContainer = () => {
-  const {tasks, setTasks} = useContext(FetchedContext);
+  const {tasks,setTasks, completed,pending} = useContext(FetchedContext);
+
+  // const addTask = ()=>{
+  //   console.log("Clicked Add Btn");
+  //   let newTask = {
+  //     title: 'I am AShis!!'
+  //   }
+  //   setTasks(()=>{
+  //     let updatedTasks = [...tasks, newTask];
+
+  //     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  //     return updatedTasks;
+  //   })
+  // }
+  const addTask = () => {
+    console.log("Clicked Add Btn");
+    const newTask = {
+      id: Math.random(), // Generate a unique ID for the new task
+      title: 'I am Ashis!!',
+      completed: false // You may want to specify the completion status
+    };
+  
+    // Create a new array of tasks with the new task
+    const updatedTasks = [newTask, ...tasks];
+  
+    // Update the tasks state
+    setTasks(updatedTasks);
+  
+    // Update localStorage with the updatedTasks
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  };
+  
 
   const [isCompletedTab, setIsCompletedTab] = useState(false);
   const showPending = () => {
@@ -62,18 +93,15 @@ const TasksContainer = () => {
       <div className="tasks-container">
         {/* Conditional rendering for pending and completed tasks */}
         {isCompletedTab
-          ? tasks
-              .filter((task) => task.completed === true)
-              .map((task, index) => {
-                return <Task key={index} value={task} />;
-              })
-          : tasks
-              .filter((task) => task.completed === false)
-              .map((task, index) => {
-                return <Task key={index} value={task} />;
-              })}
+          ? completed.map((task)=>{
+            return <Task key={task.id} value={task}/>
+          })
+          : pending.map((task)=>{
+            return <Task key={task.id} value={task}/>
+          })
+        }
       </div>
-      <div className="add-tasks">
+      <div className="add-tasks" onClick={addTask}>
         <img src={plus} alt="" />
       </div>
     </div>
