@@ -1,35 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./TasksContainer.styles.css";
 import { Link } from "react-router-dom";
 import plus from "../../../assets/svg/plus.svg";
 import Task from "../Task";
+import { FetchedContext } from "../../../App";
+
 
 const TasksContainer = () => {
-  const [tasks, setTasks] = useState([]);
-
-  const setDataToLocalStorage = (data) => {
-    localStorage.setItem('tasks', JSON.stringify(data));
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-        const data = await response.json();
-        setTasks(data);
-        setDataToLocalStorage(data);
-      } catch (error) {
-        console.log("Error Fetching Tasks!", error);
-      }
-    };
-
-    const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    } else {
-      fetchData();
-    }
-  }, []);
+  const {tasks, setTasks} = useContext(FetchedContext);
 
   const [isCompletedTab, setIsCompletedTab] = useState(false);
   const showPending = () => {
