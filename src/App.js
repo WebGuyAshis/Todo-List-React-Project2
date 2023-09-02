@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import DashboardPage from "./components/DashboardPage";
@@ -35,8 +35,26 @@ function App() {
     }
   }, []);
 
+  const [pending, setPending] = useState(0);
+  const [completed, setCompleted] = useState(0);
+
+  useEffect(() => {
+    if (tasks) {
+      const completed = tasks.filter((task) => task.completed === true);
+      const pending = tasks.filter((task) => task.completed !== true);
+
+      setCompleted(completed);
+      setPending(pending);
+
+      console.log("Pending:",pending);
+      console.log("Completed:", completed);
+    }
+  }, [tasks]);
+
   return (
-    <FetchedContext.Provider value={{ tasks, setTasks }}>
+    <FetchedContext.Provider
+      value={{ tasks, setTasks, pending, setPending, completed, setCompleted }}
+    >
       <div className="App">
         {/* <Home/> */}
         <Router>

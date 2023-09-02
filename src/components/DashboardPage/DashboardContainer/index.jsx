@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./dashboardContainer.styles.css";
 import PieChartComponent from "./Pie";
+import { FetchedContext } from "../../../App";
 
 const DashboardContainer = () => {
+  const {tasks, setTasks, pending, completed} = useContext(FetchedContext);
+
+//  useEffect(()=>{
+//   if(tasks){
+//     setTotal(tasks.length);
+//   }
+//  }, [tasks]);
+
+
+
   console.log("Inside dashboard Container ");
   return (
     <div className="dashboard-container light-glass" id="dash-container">
@@ -12,15 +23,15 @@ const DashboardContainer = () => {
       </div>
       <div className="status-container">
         <div className="total-tasks task-status">
-            <h1>200</h1>
+            <h1>{tasks?tasks.length:0}</h1>
             <p>Total Tasks</p>
         </div>
         <div className="pending-tasks task-status">
-        <h1>100</h1>
+        <h1>{pending.length}</h1>
             <p>Pending Tasks</p>
         </div>
         <div className="completed-tasks task-status">
-        <h1>100</h1>
+        <h1>{completed.length}</h1>
             <p>Complete Tasks</p>
         </div>
       </div>
