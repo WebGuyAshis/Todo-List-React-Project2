@@ -30,7 +30,7 @@ const Task = (props) => {
         </div>
       </div>
       <div className="task-category">Personal</div>
-      <div className="destroy-task" on>
+      <div className="destroy-task">
       <FontAwesomeIcon icon={faTrashAlt} style={{ color: "#ffffff" }} />
       </div>
     </div>
