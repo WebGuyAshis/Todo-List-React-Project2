@@ -4,39 +4,29 @@ import { Link } from "react-router-dom";
 import plus from "../../../assets/svg/plus.svg";
 import Task from "../Task";
 import { FetchedContext } from "../../../App";
+import AddTaskBox from "./AddTaskBox";
 
 
 const TasksContainer = () => {
   const {tasks,setTasks, completed,pending} = useContext(FetchedContext);
 
-  // const addTask = ()=>{
-  //   console.log("Clicked Add Btn");
-  //   let newTask = {
-  //     title: 'I am AShis!!'
-  //   }
-  //   setTasks(()=>{
-  //     let updatedTasks = [...tasks, newTask];
-
-  //     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-  //     return updatedTasks;
-  //   })
-  // }
   const addTask = () => {
     console.log("Clicked Add Btn");
-    const newTask = {
-      id: Math.random(), // Generate a unique ID for the new task
-      title: 'I am Ashis!!',
-      completed: false // You may want to specify the completion status
-    };
+    // const newTask = {
+    //   id: Math.random(), // Generate a unique ID for the new task
+    //   title: 'I am Ashis!!',
+    //   completed: false // You may want to specify the completion status
+    // };
   
-    // Create a new array of tasks with the new task
-    const updatedTasks = [newTask, ...tasks];
+    // // Create a new array of tasks with the new task
+    // const updatedTasks = [newTask, ...tasks];
   
-    // Update the tasks state
-    setTasks(updatedTasks);
+    // // Update the tasks state
+    // setTasks(updatedTasks);
   
-    // Update localStorage with the updatedTasks
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    // // Update localStorage with the updatedTasks
+    // localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+
   };
   
 
@@ -104,6 +94,8 @@ const TasksContainer = () => {
       <div className="add-tasks" onClick={addTask}>
         <img src={plus} alt="" />
       </div>
+
+      <AddTaskBox/>
     </div>
   );
 };
