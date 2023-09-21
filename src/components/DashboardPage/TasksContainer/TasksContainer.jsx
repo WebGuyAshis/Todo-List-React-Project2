@@ -2,34 +2,14 @@ import React, { useState, useContext } from "react";
 import "./TasksContainer.styles.css";
 import { Link } from "react-router-dom";
 import plus from "../../../assets/svg/plus.svg";
-import Task from "../Task";
+import Task from "./Task";
 import { FetchedContext } from "../../../App";
 import AddTaskBox from "./AddTaskBox";
 
 
 const TasksContainer = () => {
   const {tasks,setTasks, completed,pending} = useContext(FetchedContext);
-
-  const addTask = () => {
-    console.log("Clicked Add Btn");
-    // const newTask = {
-    //   id: Math.random(), // Generate a unique ID for the new task
-    //   title: 'I am Ashis!!',
-    //   completed: false // You may want to specify the completion status
-    // };
   
-    // // Create a new array of tasks with the new task
-    // const updatedTasks = [newTask, ...tasks];
-  
-    // // Update the tasks state
-    // setTasks(updatedTasks);
-  
-    // // Update localStorage with the updatedTasks
-    // localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-
-  };
-  
-
   const [isCompletedTab, setIsCompletedTab] = useState(false);
   const showPending = () => {
     setIsCompletedTab(false);
@@ -39,8 +19,8 @@ const TasksContainer = () => {
     setIsCompletedTab(true);
   };
   return (
-    <div className="tasks-main-container light-glass">
-      <div className="tasks-category light-glass">
+    <div className="tasks-main-container">
+      <div className="tasks-category">
         <Link className="tasks-category-item active-item" to="/">
           All
         </Link>
@@ -60,7 +40,7 @@ const TasksContainer = () => {
           <div className="date">August 23, 2023</div>
         </div>
 
-        <div className="pen-comp-toggler light-glass">
+        <div className="pen-comp-toggler">
         <div
             className={`pending-btn ${isCompletedTab ? "" : "active-item"}`}
             onClick={showPending}
@@ -91,7 +71,7 @@ const TasksContainer = () => {
           })
         }
       </div>
-      <div className="add-tasks" onClick={addTask}>
+      <div className="add-tasks">
         <img src={plus} alt="" />
       </div>
 

@@ -8,7 +8,7 @@ const DashboardContainer = () => {
 
   console.log("Inside dashboard Container ");
   return (
-    <div className="dashboard-container light-glass" id="dash-container">
+    <div className="dashboard-container" id="dash-container">
       <div className="dash-heading">
         <h2>Dashboard</h2>
         <p>See your overall Performance</p>

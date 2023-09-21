@@ -1,8 +1,85 @@
 .add-task-container{
-    background-color: aqua;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
+    background-color: rgba(240, 248, 255, 0.301);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 12px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.task-input{
+    display: flex;
+    flex-direction: column;
+}
+.task-inputDateTime{
+    display: flex;
+    gap: 10px;
+}
+
+#task-date-input,#task-time-input,#task-title-input{
+    height: 35px;
+    /* width: 100%; */
+    border: none;
+    border-radius:  35px;
+    padding: 0 10px;
+    outline: none;
+}
+
+#task-desc-input{
+    height: 70px;
+    resize: none;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    font-size: 15px;
+}
+
+.task-category-input{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.task-cat{
+    min-width: 40%;
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.alert-category{
+    display: flex;
+    gap: 10px;
+}
+.alert-box{
+    height: 50px;
+    width: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.alert-options{
+    display: flex;
+    align-items: center;
+}
+.create-task-btn{
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    margin: 0 auto;
+    cursor: pointer;
 }

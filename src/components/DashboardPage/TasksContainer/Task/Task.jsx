@@ -19,7 +19,7 @@ const Task = (props) => {
   return (
     <div className="task">
       <div className="task-description">
-        <input type="checkbox" checked = {isChecked} onChange={handleCheckbox} />
+        <input type="checkbox" checked = {isChecked} onChange={handleCheckbox}/>
          {/* <input type="checkbox" /> */}
         <div className="task-desc">
           <div className="task-heading">{props.value.title}</div>

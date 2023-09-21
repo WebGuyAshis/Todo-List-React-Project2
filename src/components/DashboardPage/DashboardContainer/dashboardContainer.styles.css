@@ -11,6 +11,8 @@
   margin-left: 40px;
   gap: 10px;
   /* color: white; */
+  background-color: rgb(240, 240, 240,0.4);
+
 }
 .dash-heading {
   width: 100%;

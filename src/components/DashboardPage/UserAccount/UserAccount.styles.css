@@ -10,6 +10,8 @@
     padding: 20px;
     box-sizing: border-box;
     position: relative;
+    background-color: rgb(240, 240, 240,0.4);
+
 }
 
 .user-image{
@@ -31,6 +33,8 @@
     padding: 5px 15px;
     border-radius: 40px;
     margin-top: 10px;
+    background-color: rgb(240, 240, 240,0.4);
+
 }
 
 .notification-container{

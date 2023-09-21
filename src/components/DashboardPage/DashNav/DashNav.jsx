@@ -22,7 +22,7 @@ const DashNav = () => {
       </div>
 
       {/* Dash/Tasks Toggler */}
-      <div className="dash-tasks-togg light-glass">
+      <div className="dash-tasks-togg">
         <div className={`dash-tog-btn dash-btn ${isDash?"active-toggle" : ""}`} onClick={dashClick}>
           Dashboard
         </div>
@@ -31,7 +31,7 @@ const DashNav = () => {
         </div>
       </div>
 
-      <div className="user-account-name light-glass">
+      <div className="user-account-name">
         <div className="user-img">
           <img className="user-img" src={userImg} alt="" />
         </div>

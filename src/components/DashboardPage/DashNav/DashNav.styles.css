@@ -26,6 +26,8 @@ color: rgb(252, 19, 97);
     width: 300px;
     height: 35px;
     border-radius: 35px;
+    background-color: rgb(240, 240, 240,0.4);
+
 }
 
 .dash-tog-btn{
@@ -51,6 +53,8 @@ color: rgb(252, 19, 97);
     align-items: center;
     /* background-color: rgb(219, 219, 219); */
     border-radius: 40px;
+    background-color: rgb(240, 240, 240,0.4);
+
 }
 
 .user-img{

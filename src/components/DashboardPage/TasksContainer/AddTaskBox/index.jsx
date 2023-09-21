@@ -17,13 +17,12 @@ const AddTaskBox = () => {
   const [taskDesc, setTaskDesc] = useState("");
   const [taskCategory, setTaskCategory] = useState("");
   const [enableAlert, setEnableAlert] = useState(false);
-  
+
   const addTask = async (e) => {
     e.preventDefault();
     fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       body: JSON.stringify({
-        id: Math.random(),
         title: taskTitle,
         date: taskDate,
         time: taskTime,
@@ -37,31 +36,23 @@ const AddTaskBox = () => {
     })
       .then((response) => response.json())
       .then((newTask) => {
+        newTask.id = Date.now();
         console.log("New Task:", newTask);
         const updatedTasks = [newTask, ...tasks];
-        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-        setTasks(updatedTasks)
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+        setTasks(updatedTasks);
       });
-
   };
   return (
     <div className="add-task-container">
       <h3>Create New Task</h3>
       <form action="">
-        <div className="task-title">
+        <div className="task-input">
           <label htmlFor="task-title-input">Task Title</label>
-          <input
-            id="task-title-input"
-            type="text"
-            placeholder="Eg. Complete Assignment"
-            value={taskTitle}
-            onChange={(e) => {
-              setTaskTitle(e.target.value);
-            }}
-          />
+          <input id="task-title-input" type="text" placeholder="Eg. Complete Assignment" value={taskTitle} onChange={(e) => {setTaskTitle(e.target.value)}} required/>
         </div>
 
-        <div className="task-input">
+        <div className="task-inputDateTime">
           <div className="task-date">
             <label htmlFor="task-date-input">Date</label>
             <input
@@ -86,7 +77,7 @@ const AddTaskBox = () => {
           </div>
         </div>
 
-        <div className="task-desc">
+        <div className="task-input">
           <label htmlFor="task-desc-input">Description</label>
           <textarea
             name=""
@@ -100,7 +91,7 @@ const AddTaskBox = () => {
           ></textarea>
         </div>
 
-        <div className="task-category">
+        <div className="task-category-input">
           <div
             className="task-cat"
             onClick={() => {
@@ -141,12 +132,14 @@ const AddTaskBox = () => {
             <input type="checkbox" id="alert-on-check" />
             <label htmlFor="alert-on-check">Enable Alert</label>
           </div>
+
           <div className="alert-options">
             <input type="checkbox" id="alert-off-check" />
             <label htmlFor="alert-off-check">Disable Alert</label>
           </div>
         </div>
-        <button onClick={addTask}>Create Task</button>
+
+        <button className="create-task-btn" onClick={addTask}>Create Task</button>
       </form>
     </div>
   );
