@@ -1,12 +1,22 @@
+.box-background{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 .add-task-container{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
-    background-color: rgba(240, 248, 255, 0.301);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.572);
     border-radius: 10px;
     overflow: hidden;
     padding: 12px;
@@ -74,12 +84,24 @@ form{
 .alert-options{
     display: flex;
     align-items: center;
+    gap: 5px;
+}
+.box-btn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 .create-task-btn{
     width: 100px;
-    height: 40px;
+    height: 35px;
     border-radius: 10px;
-    border: none;
-    margin: 0 auto;
     cursor: pointer;
+    border: 2px solid rgb(0, 174, 255);
+}
+.delete-task-btn{
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid rgb(255, 42, 42);
 }

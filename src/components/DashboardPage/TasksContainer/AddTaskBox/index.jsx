@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import "./AddTaskBox.styles.css";
 import { FetchedContext } from "../../../../App";
+import { add } from "@amcharts/amcharts5/.internal/core/util/Time";
 
-const AddTaskBox = () => {
+const AddTaskBox = ({taskBox, setTaskBox}) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0"); // January is 0
@@ -43,7 +44,10 @@ const AddTaskBox = () => {
         setTasks(updatedTasks);
       });
   };
+
+
   return (
+    <div className="box-background">
     <div className="add-task-container">
       <h3>Create New Task</h3>
       <form action="">
@@ -62,6 +66,7 @@ const AddTaskBox = () => {
               onChange={(e) => {
                 setTaskDate(e.target.value);
               }}
+              required
             />
           </div>
 
@@ -73,6 +78,7 @@ const AddTaskBox = () => {
               onChange={(e) => {
                 setTaskTime(e.target.value);
               }}
+              required
             />
           </div>
         </div>
@@ -88,6 +94,7 @@ const AddTaskBox = () => {
             onChange={(e) => {
               setTaskDesc(e.target.value);
             }}
+            required
           ></textarea>
         </div>
 
@@ -129,18 +136,21 @@ const AddTaskBox = () => {
         <div className="alert-category">
           <div className="alert-box">{/* Icon and texgt */}</div>
           <div className="alert-options">
-            <input type="checkbox" id="alert-on-check" />
+            <input type="radio" id="alert-on-check" name="alert"/>
             <label htmlFor="alert-on-check">Enable Alert</label>
           </div>
 
           <div className="alert-options">
-            <input type="checkbox" id="alert-off-check" />
+            <input type="radio" id="alert-off-check" name="alert"/>
             <label htmlFor="alert-off-check">Disable Alert</label>
           </div>
         </div>
-
-        <button className="create-task-btn" onClick={addTask}>Create Task</button>
+            <div className="box-btn">
+            <button type="submit" className="create-task-btn" onSubmit={addTask}>Create Task</button>
+        <button className="delete-task-btn" onClick={()=>{setTaskBox(!taskBox)}}>Cancel</button>
+            </div>
       </form>
+    </div>
     </div>
   );
 };

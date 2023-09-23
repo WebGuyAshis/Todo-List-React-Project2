@@ -8,9 +8,9 @@ import AddTaskBox from "./AddTaskBox";
 
 
 const TasksContainer = () => {
-  const {tasks,setTasks, completed,pending} = useContext(FetchedContext);
-  
+  const [taskBox, setTaskBox] = useState(false);
   const [isCompletedTab, setIsCompletedTab] = useState(false);
+  const {tasks,setTasks, completed,pending} = useContext(FetchedContext);
   const showPending = () => {
     setIsCompletedTab(false);
   };
@@ -18,6 +18,7 @@ const TasksContainer = () => {
   const showCompleted = () => {
     setIsCompletedTab(true);
   };
+
   return (
     <div className="tasks-main-container">
       <div className="tasks-category">
@@ -71,11 +72,12 @@ const TasksContainer = () => {
           })
         }
       </div>
-      <div className="add-tasks">
+      <div className="add-tasks" onClick={()=>{setTaskBox(!taskBox)}}>
         <img src={plus} alt="" />
       </div>
 
-      <AddTaskBox/>
+      {/* <AddTaskBox/> */}
+      {taskBox && <AddTaskBox taskBox={taskBox} setTaskBox={setTaskBox}/>}
     </div>
   );
 };

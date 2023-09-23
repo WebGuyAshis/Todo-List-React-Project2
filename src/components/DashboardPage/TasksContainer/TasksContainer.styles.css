@@ -9,6 +9,7 @@
     box-sizing: border-box;
     padding: 0 40px;
     flex: 1;
+    position: relative;
     margin-left: 40px;
 }
 .tasks-category{

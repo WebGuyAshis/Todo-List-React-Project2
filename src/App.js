@@ -8,7 +8,7 @@ import React from "react";
 const FetchedContext = createContext();
 function App() {
   const [tasks, setTasks] = useState([]);
-  console.log("Tasks of States:",tasks);
+  console.log("Tasks of States:", tasks);
 
   const setDataToLocalStorage = (data) => {
     localStorage.setItem("tasks", JSON.stringify(data));
@@ -37,6 +37,16 @@ function App() {
     }
   }, []);
 
+  const deleteTask = (id) => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+      method: "DELETE",
+    });
+    let updatedTask = tasks.filter((task)=>task.id !== id);
+    localStorage.setItem("tasks", JSON.stringify(updatedTask));
+    setTasks(JSON.parse(localStorage.getItem('tasks')))
+    console.log("Delted");
+  };
+
   const [pending, setPending] = useState(0);
   const [completed, setCompleted] = useState(0);
 
@@ -55,7 +65,15 @@ function App() {
 
   return (
     <FetchedContext.Provider
-      value={{ tasks, setTasks, pending, setPending, completed, setCompleted }}
+      value={{
+        tasks,
+        setTasks,
+        pending,
+        setPending,
+        completed,
+        setCompleted,
+        deleteTask,
+      }}
     >
       <div className="App">
         {/* <Home/> */}
