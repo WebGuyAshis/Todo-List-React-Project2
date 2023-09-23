@@ -10,7 +10,7 @@ const AddTaskBox = ({taskBox, setTaskBox}) => {
   const day = String(today.getDate()).padStart(2, "0");
   const formattedToday = `${year}-${month}-${day}`;
 
-  const { tasks, setTasks } = useContext(FetchedContext);
+  const { tasks, setTasks} = useContext(FetchedContext);
 
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState(formattedToday);
@@ -42,6 +42,7 @@ const AddTaskBox = ({taskBox, setTaskBox}) => {
         const updatedTasks = [newTask, ...tasks];
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
         setTasks(updatedTasks);
+        setTaskBox(!taskBox)
       });
   };
 
@@ -50,7 +51,7 @@ const AddTaskBox = ({taskBox, setTaskBox}) => {
     <div className="box-background">
     <div className="add-task-container">
       <h3>Create New Task</h3>
-      <form action="">
+      <form action="" onSubmit={addTask}>
         <div className="task-input">
           <label htmlFor="task-title-input">Task Title</label>
           <input id="task-title-input" type="text" placeholder="Eg. Complete Assignment" value={taskTitle} onChange={(e) => {setTaskTitle(e.target.value)}} required/>
@@ -146,7 +147,7 @@ const AddTaskBox = ({taskBox, setTaskBox}) => {
           </div>
         </div>
             <div className="box-btn">
-            <button type="submit" className="create-task-btn" onSubmit={addTask}>Create Task</button>
+            <button type="submit" className="create-task-btn">Create Task</button>
         <button className="delete-task-btn" onClick={()=>{setTaskBox(!taskBox)}}>Cancel</button>
             </div>
       </form>
