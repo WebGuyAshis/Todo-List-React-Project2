@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import {faPenToSquare} from '@fortawesome/free-regular-svg-icons'
 import "./Task.styles.css";
 import { FetchedContext } from "../../../../App";
 
 
 
-const Task = ({value}) => {
+const Task = ({value,editTaskBox}) => {
   const {deleteTask} = useContext(FetchedContext);
   const [isChecked, setIsChecked] = useState(value.completed);
 
@@ -18,14 +19,12 @@ const Task = ({value}) => {
     setIsChecked(value.completed)
   },[value.completed]);
 
-//   const deleteTask=(id)=>{
-//     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-//   method: 'DELETE',
-// });
-//   }
+  const openDetails = (e)=>{
+    console.log("Open Details Box!");
+  }
 
   return (
-    <div className="task">
+    <div className="task" onClick={openDetails}>
       <div className="task-description">
         <input type="checkbox" checked = {isChecked} onChange={handleCheckbox}/>
          {/* <input type="checkbox" /> */}
@@ -38,8 +37,9 @@ const Task = ({value}) => {
         </div>
       </div>
       <div className="task-category">Personal</div>
-      <div className="destroy-task" onClick={()=>{deleteTask(value.id)}}>
-      <FontAwesomeIcon icon={faTrashAlt} style={{ color: "#ffffff" }} />
+      <div className="edit-del-icons">
+      <FontAwesomeIcon className="edit-task" icon={faPenToSquare} onClick={()=>{editTaskBox(value.id)}} />
+      <FontAwesomeIcon className="destroy-task" icon={faTrashAlt} onClick={()=>{deleteTask(value.id)}}/>
       </div>
     </div>
   );

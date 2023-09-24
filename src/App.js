@@ -47,6 +47,10 @@ function App() {
     console.log("Delted");
   };
 
+  const editTask = ()=>{
+    
+  }
+
   const [pending, setPending] = useState(0);
   const [completed, setCompleted] = useState(0);
 

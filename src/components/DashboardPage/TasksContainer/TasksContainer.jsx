@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./TasksContainer.styles.css";
 import { Link } from "react-router-dom";
 import plus from "../../../assets/svg/plus.svg";
 import Task from "./Task";
 import { FetchedContext } from "../../../App";
 import AddTaskBox from "./AddTaskBox";
+import EditBox from "./EditBox";
 
 
 const TasksContainer = () => {
@@ -19,6 +20,22 @@ const TasksContainer = () => {
     setIsCompletedTab(true);
   };
 
+  const [editBox, setEditBox] = useState(false);
+  const [editData, setEditData] = useState(null);
+
+  const editTaskBox= (id)=>{
+    setEditBox(!editBox);
+    console.log("Open Task Box,", id);
+    const editableTask = tasks.find((task) => task.id === id);
+    setEditData(editableTask);
+  }
+
+  useEffect(()=>{
+    console.log("Editable Task Data:", editData);
+    if(editData){
+      setEditBox(true)
+    }
+  }, [editData])
   return (
     <div className="tasks-main-container">
       <div className="tasks-category">
@@ -65,10 +82,10 @@ const TasksContainer = () => {
         {/* Conditional rendering for pending and completed tasks */}
         {isCompletedTab
           ? completed.map((task)=>{
-            return <Task key={task.id} value={task}/>
+            return <Task key={task.id} value={task}  editTaskBox = {editTaskBox} />
           })
           : pending.map((task)=>{
-            return <Task key={task.id} value={task}/>
+            return <Task key={task.id} value={task}  editTaskBox = {editTaskBox}/>
           })
         }
       </div>
@@ -78,6 +95,7 @@ const TasksContainer = () => {
 
       {/* <AddTaskBox/> */}
       {taskBox && <AddTaskBox taskBox={taskBox} setTaskBox={setTaskBox}/>}
+      {editBox && <EditBox editData={editData} editBox={editBox} setEditBox={setEditBox}/> }
     </div>
   );
 };
