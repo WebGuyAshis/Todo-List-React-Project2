@@ -51,7 +51,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
     <div className="box-background">
       <div className="add-task-container">
         <h3>Create New Task</h3>
-        <form action="" onSubmit={addTask}>
+        <form action="" onSubmit={addTask} className="addTask-form">
           <div className="task-input">
             <label htmlFor="task-title-input">Task Title</label>
             <input

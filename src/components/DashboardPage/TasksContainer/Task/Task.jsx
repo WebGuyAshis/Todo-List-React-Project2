@@ -16,13 +16,15 @@ const Task = ({value,editTaskBox}) => {
     console.log("Change ID of task", id, "Checked:",isChecked,"Value.completed:", value.completed);
   let updatedTasks = tasks.map((task)=>{
     if(task.id===id){
-      task.completed = true;
+      task.completed = (!task.completed);
       return task
     }
+
     return task;
   });
-
-  setTasks(updatedTasks)
+  setTimeout(() => {
+    setTasks(updatedTasks)
+  }, 300);
   }
   // To update the value because react ony initialise it value once and after props change it does not updates the UI so to achieve that we will use useEffect hook
   // useEffect(()=>{

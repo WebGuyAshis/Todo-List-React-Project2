@@ -72,9 +72,9 @@
 .search-container{
     width: 100%;
     display: flex;
-    padding: 0 40px;
+    /* padding: 0 40px; */
     height: 35px;
-    margin-top: 20px;
+    margin: 20px 40px 0 40px;
     gap: 20px;
 }
 .search-bar{
@@ -87,7 +87,7 @@
     height: 35px;
 }
 
-.search-container span{
+.search-container .text-search-btn{
     width: 100px;
     background-color: rgb(14, 175, 255);
     color: white;
@@ -96,6 +96,8 @@
     justify-content: center;
     border-radius: 35px;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 
 .tasks-container{

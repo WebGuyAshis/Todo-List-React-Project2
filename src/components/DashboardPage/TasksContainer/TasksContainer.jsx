@@ -37,7 +37,7 @@ const TasksContainer = () => {
     console.log("Value of editbox", editBox);
     setEditBox(!editBox);
     console.log("Value of after editbox", editBox);
-
+// Send A Dummy Request
     console.log("Open Task Box,", id);
     const editableTask = tasks.find((task) => task.id === id);
     setEditData(editableTask);
@@ -80,8 +80,20 @@ const TasksContainer = () => {
   //     setEditBox(true);
   //   // }
   // }, [editData]);
-
+  const [searchInput, setSearcInput] = useState('');
+  const [searchedTask, setSearchedTask] = useState(null)
   
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log('Handling Search, value:', searchInput);
+  
+    const regex = new RegExp(searchInput, 'i');
+    const searchedTasks = tasks.filter((task) => regex.exec(task.title));
+  
+    console.log('Searched Tasks:', searchedTasks);
+    setSearchedTask(searchedTasks)
+  };
+
   return (
     <div className="tasks-main-container">
       <div className="tasks-category">
@@ -119,10 +131,10 @@ const TasksContainer = () => {
           </div>
         </div>
       </div>
-      <div className="search-container">
-        <input type="text" placeholder="Search" className="search-bar" />
-        <span>Search</span>
-      </div>
+      <form className="search-container" onSubmit={handleSearch}>
+        <input type="text" placeholder="Search"  value={searchInput} className="search-bar" name="searchbox" onChange={(e)=>{setSearcInput(e.target.value)}}/>
+        <input type="submit" value="Search" className="text-search-btn"/>
+      </form>
 
       {/* <div className="tasks-container">
             {tasks.map((task)=>{
@@ -133,7 +145,10 @@ const TasksContainer = () => {
             })}
       </div> */}
       <div className="tasks-container">
-        {tasks
+        {searchedTask?
+        searchedTask.map((task)=>{
+          return <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+        }):tasks
           .filter((task) => task.completed === isCompletedTab)
           .map((task) => (
               <Task key={task.id} value={task} editTaskBox={editTaskBox} />

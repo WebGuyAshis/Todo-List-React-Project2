@@ -21,7 +21,7 @@
     overflow: hidden;
     padding: 12px;
 }
-form{
+.addTask-form{
     display: flex;
     flex-direction: column;
     gap: 10px;
