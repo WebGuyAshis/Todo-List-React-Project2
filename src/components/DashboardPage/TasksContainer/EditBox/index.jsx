@@ -34,28 +34,50 @@ const EditBox = (props) => {
     // setEditEnableAlert,
   } = props;
 
-
-  const editTask = (e)=>{
+  const editTask = (e) => {
     e.preventDefault();
     console.log("Lets Edit Task of:", editData);
 
-    let updatedTasks = tasks.map((task)=>{
-      if(task.id === editData.id){
-        return editData
-      }
-      return task;
+    fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
+      method: "PUT",
+      body: JSON.stringify({
+        id: 1,
+        title: editData.title,
+        date: editData.date,
+        time: editData.time,
+        desc: editData.desc,
+        category: editData.category,
+        completed: editData.completed,
+        alert: editData.enableAlert,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
     })
-  // Update localStorage with the updatedTasks array
-  localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+      .then((response) => response.json())
+      .then((json) => {
+        let updatedTasks = tasks.map((task) => {
+          if (task.id === editData.id) {
+            return editData;
+          }
+          return task;
+        });
+        // Update localStorage with the updatedTasks array
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
-  // Retrieve and parse the data from localStorage
-  const updatedTasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"));
+        // Retrieve and parse the data from localStorage
+        const updatedTasksFromLocalStorage = JSON.parse(
+          localStorage.getItem("tasks")
+        );
 
-  // Update the tasks state with the parsed data
-  setTasks(updatedTasksFromLocalStorage);
-  setEditBox(!editBox)
-  }
-
+        // Update the tasks state with the parsed data
+        setTasks(updatedTasksFromLocalStorage);
+        setEditBox(!editBox);
+      })
+      .catch((err) => {
+        console.log("Dummy Put Request!");
+      });
+  };
 
   // const [editTaskTitle, setEditTaskTitle] = useState(editData.title || ""); // Initialize with editData if available
   // const [editTaskDate, setEditTaskDate] = useState(editData.date || formattedToday);
@@ -77,7 +99,7 @@ const EditBox = (props) => {
               placeholder="Eg. Complete Assignment"
               value={editData.title}
               onChange={(e) => {
-                setEditData(()=>({...editData, title: e.target.value}));
+                setEditData(() => ({ ...editData, title: e.target.value }));
               }}
               required
             />
@@ -91,7 +113,7 @@ const EditBox = (props) => {
                 id="task-date-input"
                 value={editData.date}
                 onChange={(e) => {
-                  setEditData(()=>({...editData, date: e.target.value}));
+                  setEditData(() => ({ ...editData, date: e.target.value }));
                 }}
                 required
               />
@@ -104,7 +126,7 @@ const EditBox = (props) => {
                 id="task-time-input"
                 value={editData.time}
                 onChange={(e) => {
-                  setEditData(()=>({...editData, time: e.target.value}));
+                  setEditData(() => ({ ...editData, time: e.target.value }));
                 }}
                 required
               />
@@ -120,7 +142,7 @@ const EditBox = (props) => {
               rows="10"
               value={editData.desc}
               onChange={(e) => {
-                setEditData(()=>({...editData, desc: e.target.value}));
+                setEditData(() => ({ ...editData, desc: e.target.value }));
               }}
               required
             ></textarea>
@@ -130,7 +152,7 @@ const EditBox = (props) => {
             <div
               className="task-cat"
               onClick={() => {
-                setEditData(()=>({...editData, category: "Personal"}));
+                setEditData(() => ({ ...editData, category: "Personal" }));
               }}
             >
               Personal
@@ -138,7 +160,7 @@ const EditBox = (props) => {
             <div
               className="task-cat"
               onClick={() => {
-                setEditData(()=>({...editData, category: "Work"}));
+                setEditData(() => ({ ...editData, category: "Work" }));
               }}
             >
               Work
@@ -146,7 +168,7 @@ const EditBox = (props) => {
             <div
               className="task-cat"
               onClick={() => {
-                setEditData(()=>({...editData, category: "School"}));
+                setEditData(() => ({ ...editData, category: "School" }));
               }}
             >
               School
@@ -154,7 +176,7 @@ const EditBox = (props) => {
             <div
               className="task-cat"
               onClick={() => {
-                setEditData(()=>({...editData, category: "Events"}));
+                setEditData(() => ({ ...editData, category: "Events" }));
               }}
             >
               Events
@@ -171,7 +193,7 @@ const EditBox = (props) => {
             </div>
 
             <div className="alert-options">
-              <input type="radio" id="alert-off-check" name="alert"/>
+              <input type="radio" id="alert-off-check" name="alert" />
               <label htmlFor="alert-off-check">Disable Alert</label>
             </div>
           </div>

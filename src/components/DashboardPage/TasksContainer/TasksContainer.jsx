@@ -7,8 +7,6 @@ import { FetchedContext } from "../../../App";
 import AddTaskBox from "./AddTaskBox";
 import EditBox from "./EditBox";
 
-import { motion } from "framer-motion";
-
 const TasksContainer = () => {
   const [taskBox, setTaskBox] = useState(false);
   const [isCompletedTab, setIsCompletedTab] = useState(false);
