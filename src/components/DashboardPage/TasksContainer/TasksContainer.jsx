@@ -7,11 +7,13 @@ import { FetchedContext } from "../../../App";
 import AddTaskBox from "./AddTaskBox";
 import EditBox from "./EditBox";
 
+import { motion } from "framer-motion";
 
 const TasksContainer = () => {
   const [taskBox, setTaskBox] = useState(false);
   const [isCompletedTab, setIsCompletedTab] = useState(false);
-  const {tasks,setTasks, completed,pending} = useContext(FetchedContext);
+  const { tasks, setTasks, completed, pending } = useContext(FetchedContext);
+
   const showPending = () => {
     setIsCompletedTab(false);
   };
@@ -21,21 +23,65 @@ const TasksContainer = () => {
   };
 
   const [editBox, setEditBox] = useState(false);
-  const [editData, setEditData] = useState(null);
+  const [editData, setEditData] = useState({
+    id: "",
+    title: "",
+    date: "",
+    time: "",
+    desc: "",
+    category: "",
+    alert: false,
+  });
 
-  const editTaskBox= (id)=>{
+  const editTaskBox = (id) => {
+    console.log("Value of editbox", editBox);
     setEditBox(!editBox);
+    console.log("Value of after editbox", editBox);
+
     console.log("Open Task Box,", id);
     const editableTask = tasks.find((task) => task.id === id);
     setEditData(editableTask);
-  }
+  };
 
-  useEffect(()=>{
-    console.log("Editable Task Data:", editData);
-    if(editData){
-      setEditBox(true)
-    }
-  }, [editData])
+  // const [editTaskTitle, setEditTaskTitle] = useState(editData.title); // Initialize with editData if available
+  // const [editTaskDate, setEditTaskDate] = useState(editData.date);
+  // const [editTaskTime, setEditTaskTime] = useState(editData.time);
+  // const [editTaskDesc, setEditTaskDesc] = useState(editData.desc);
+  // const [editTaskCategory, setEditTaskCategory] = useState(editData.category);
+  // const [editEnableAlert, setEditEnableAlert] = useState(editData.alert);
+
+  // const editTask = (e,id)=>{
+  //   e.preventDefault();
+  //   console.log("Lets Edit Task of:", id);
+  // }
+  const editBoxProps = {
+    // editTask,
+    editData,
+    setEditData,
+    editBox,
+    setEditBox,
+    // editTaskTitle,
+    // setEditTaskTitle,
+    // editTaskDate,
+    // setEditTaskDate,
+    // editTaskTime,
+    // setEditTaskTime,
+    // editTaskDesc,
+    // setEditTaskDesc,
+    // editTaskCategory,
+    // setEditTaskCategory,
+    // editEnableAlert,
+    // setEditEnableAlert,
+  };
+
+  // useEffect(() => {
+  //   console.log("Editable Task Data:", editData);
+  //   // if (editData) {
+  //     setEditBox(true);
+  //   // }
+  // }, [editData]);
+
+  
   return (
     <div className="tasks-main-container">
       <div className="tasks-category">
@@ -59,7 +105,7 @@ const TasksContainer = () => {
         </div>
 
         <div className="pen-comp-toggler">
-        <div
+          <div
             className={`pending-btn ${isCompletedTab ? "" : "active-item"}`}
             onClick={showPending}
           >
@@ -78,24 +124,34 @@ const TasksContainer = () => {
         <span>Search</span>
       </div>
 
+      {/* <div className="tasks-container">
+            {tasks.map((task)=>{
+              if(task.completed === isCompletedTab){
+                return <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+              }
+              return null;
+            })}
+      </div> */}
       <div className="tasks-container">
-        {/* Conditional rendering for pending and completed tasks */}
-        {isCompletedTab
-          ? completed.map((task)=>{
-            return <Task key={task.id} value={task}  editTaskBox = {editTaskBox} />
-          })
-          : pending.map((task)=>{
-            return <Task key={task.id} value={task}  editTaskBox = {editTaskBox}/>
-          })
-        }
+        {tasks
+          .filter((task) => task.completed === isCompletedTab)
+          .map((task) => (
+              <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+          ))}
       </div>
-      <div className="add-tasks" onClick={()=>{setTaskBox(!taskBox)}}>
+      <div
+        className="add-tasks"
+        onClick={() => {
+          setTaskBox(!taskBox);
+        }}
+      >
         <img src={plus} alt="" />
       </div>
 
       {/* <AddTaskBox/> */}
-      {taskBox && <AddTaskBox taskBox={taskBox} setTaskBox={setTaskBox}/>}
-      {editBox && <EditBox editData={editData} editBox={editBox} setEditBox={setEditBox}/> }
+      {taskBox && <AddTaskBox taskBox={taskBox} setTaskBox={setTaskBox} />}
+      {console.log("Value of Editbox befor Logging!", editBox)}
+      {editBox && <EditBox {...editBoxProps} />}
     </div>
   );
 };

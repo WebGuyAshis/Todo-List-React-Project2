@@ -7,6 +7,7 @@ import React from "react";
 
 const FetchedContext = createContext();
 function App() {
+
   const [tasks, setTasks] = useState([]);
   console.log("Tasks of States:", tasks);
 

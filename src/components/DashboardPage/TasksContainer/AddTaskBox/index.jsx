@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import "./AddTaskBox.styles.css";
 import { FetchedContext } from "../../../../App";
-import { add } from "@amcharts/amcharts5/.internal/core/util/Time";
 
 const AddTaskBox = ({ taskBox, setTaskBox }) => {
   const today = new Date();
@@ -19,6 +18,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
   const [taskCategory, setTaskCategory] = useState("");
   const [enableAlert, setEnableAlert] = useState(false);
 
+
   const addTask = async (e) => {
     e.preventDefault();
     fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -29,6 +29,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
         time: taskTime,
         description: taskDesc,
         category: taskCategory,
+        completed:false,
         alert: enableAlert,
       }),
       headers: {
@@ -145,12 +146,12 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
           <div className="alert-category">
             <div className="alert-box">{/* Icon and texgt */}</div>
             <div className="alert-options">
-              <input type="radio" id="alert-on-check" name="alert" />
+              <input type="radio" id="alert-on-check" name="alert"  onChange={() => setEnableAlert(true)}/>
               <label htmlFor="alert-on-check">Enable Alert</label>
             </div>
 
             <div className="alert-options">
-              <input type="radio" id="alert-off-check" name="alert" />
+              <input type="radio" id="alert-off-check" name="alert" onChange={() => setEnableAlert(false)}/>
               <label htmlFor="alert-off-check">Disable Alert</label>
             </div>
           </div>

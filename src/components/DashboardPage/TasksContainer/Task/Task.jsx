@@ -8,16 +8,26 @@ import { FetchedContext } from "../../../../App";
 
 
 const Task = ({value,editTaskBox}) => {
-  const {deleteTask} = useContext(FetchedContext);
+  const {deleteTask, tasks,setTasks} = useContext(FetchedContext);
   const [isChecked, setIsChecked] = useState(value.completed);
 
-  const handleCheckbox = ()=>{
+  const handleCheckbox = (id)=>{
     setIsChecked(!isChecked);
+    console.log("Change ID of task", id, "Checked:",isChecked,"Value.completed:", value.completed);
+  let updatedTasks = tasks.map((task)=>{
+    if(task.id===id){
+      task.completed = true;
+      return task
+    }
+    return task;
+  });
+
+  setTasks(updatedTasks)
   }
   // To update the value because react ony initialise it value once and after props change it does not updates the UI so to achieve that we will use useEffect hook
-  useEffect(()=>{
-    setIsChecked(value.completed)
-  },[value.completed]);
+  // useEffect(()=>{
+  //   setIsChecked(value.completed)
+  // },[value.completed]);
 
   const openDetails = (e)=>{
     console.log("Open Details Box!");
@@ -26,7 +36,7 @@ const Task = ({value,editTaskBox}) => {
   return (
     <div className="task" onClick={openDetails}>
       <div className="task-description">
-        <input type="checkbox" checked = {isChecked} onChange={handleCheckbox}/>
+        <input type="checkbox" checked = {isChecked} onChange={()=>{handleCheckbox(value.id)}}/>
          {/* <input type="checkbox" /> */}
         <div className="task-desc">
           <div className="task-heading">{value.title}</div>
@@ -36,7 +46,7 @@ const Task = ({value,editTaskBox}) => {
           </span> */}
         </div>
       </div>
-      <div className="task-category">Personal</div>
+      <div className="task-category">{value.category ? value.category: "Personal"}</div>
       <div className="edit-del-icons">
       <FontAwesomeIcon className="edit-task" icon={faPenToSquare} onClick={()=>{editTaskBox(value.id)}} />
       <FontAwesomeIcon className="destroy-task" icon={faTrashAlt} onClick={()=>{deleteTask(value.id)}}/>
