@@ -7,10 +7,11 @@ import { FetchedContext } from "../../../App";
 import AddTaskBox from "./AddTaskBox";
 import EditBox from "./EditBox";
 
+
 const TasksContainer = () => {
   const [taskBox, setTaskBox] = useState(false);
   const [isCompletedTab, setIsCompletedTab] = useState(false);
-  const { tasks, setTasks, completed, pending } = useContext(FetchedContext);
+  const { tasks, setTasks, completed, pending ,notify } = useContext(FetchedContext);
 
   const showPending = () => {
     setIsCompletedTab(false);
@@ -31,59 +32,34 @@ const TasksContainer = () => {
     alert: false,
   });
 
+  
   const editTaskBox = (id) => {
     console.log("Value of editbox", editBox);
     setEditBox(!editBox);
     console.log("Value of after editbox", editBox);
-// Send A Dummy Request
     console.log("Open Task Box,", id);
     const editableTask = tasks.find((task) => task.id === id);
     setEditData(editableTask);
   };
 
-  // const [editTaskTitle, setEditTaskTitle] = useState(editData.title); // Initialize with editData if available
-  // const [editTaskDate, setEditTaskDate] = useState(editData.date);
-  // const [editTaskTime, setEditTaskTime] = useState(editData.time);
-  // const [editTaskDesc, setEditTaskDesc] = useState(editData.desc);
-  // const [editTaskCategory, setEditTaskCategory] = useState(editData.category);
-  // const [editEnableAlert, setEditEnableAlert] = useState(editData.alert);
-
-  // const editTask = (e,id)=>{
-  //   e.preventDefault();
-  //   console.log("Lets Edit Task of:", id);
-  // }
   const editBoxProps = {
-    // editTask,
     editData,
     setEditData,
     editBox,
     setEditBox,
-    // editTaskTitle,
-    // setEditTaskTitle,
-    // editTaskDate,
-    // setEditTaskDate,
-    // editTaskTime,
-    // setEditTaskTime,
-    // editTaskDesc,
-    // setEditTaskDesc,
-    // editTaskCategory,
-    // setEditTaskCategory,
-    // editEnableAlert,
-    // setEditEnableAlert,
   };
 
-  // useEffect(() => {
-  //   console.log("Editable Task Data:", editData);
-  //   // if (editData) {
-  //     setEditBox(true);
-  //   // }
-  // }, [editData]);
   const [searchInput, setSearcInput] = useState('');
   const [searchedTask, setSearchedTask] = useState(null)
   
   const handleSearch = (e) => {
     e.preventDefault();
     console.log('Handling Search, value:', searchInput);
+    if(searchInput=== ""){
+      console.log("Search Field is empty");
+      setTasks(tasks);
+      return;
+    }
   
     const regex = new RegExp(searchInput, 'i');
     const searchedTasks = tasks.filter((task) => regex.exec(task.title));

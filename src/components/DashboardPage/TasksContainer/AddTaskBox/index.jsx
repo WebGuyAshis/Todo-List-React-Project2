@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import "./AddTaskBox.styles.css";
 import { FetchedContext } from "../../../../App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell, faBellSlash } from "@fortawesome/free-regular-svg-icons";
 
 const AddTaskBox = ({ taskBox, setTaskBox }) => {
   const today = new Date();
@@ -9,7 +11,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
   const day = String(today.getDate()).padStart(2, "0");
   const formattedToday = `${year}-${month}-${day}`;
 
-  const { tasks, setTasks } = useContext(FetchedContext);
+  const { tasks, setTasks,notify } = useContext(FetchedContext);
 
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState(formattedToday);
@@ -27,7 +29,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
         title: taskTitle,
         date: taskDate,
         time: taskTime,
-        description: taskDesc,
+        desc: taskDesc,
         category: taskCategory,
         completed:false,
         alert: enableAlert,
@@ -44,7 +46,11 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
         setTasks(updatedTasks);
         setTaskBox(!taskBox);
-      });
+        notify("Successfully Created Task!", "success")
+      })
+      .catch(err=>{
+        notify("Error Creating Task!!","error")
+      })
   };
 
   return (
@@ -110,7 +116,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
 
           <div className="task-category-input">
             <div
-              className="task-cat"
+              className={`task-cat ${taskCategory==="Personal"? "active-category":""}`}
               onClick={() => {
                 setTaskCategory("Personal");
               }}
@@ -118,7 +124,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
               Personal
             </div>
             <div
-              className="task-cat"
+              className={`task-cat ${taskCategory==="Work"? "active-category":""}`}
               onClick={() => {
                 setTaskCategory("Work");
               }}
@@ -126,7 +132,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
               Work
             </div>
             <div
-              className="task-cat"
+              className={`task-cat ${taskCategory==="School"? "active-category":""}`}
               onClick={() => {
                 setTaskCategory("School");
               }}
@@ -134,7 +140,7 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
               School
             </div>
             <div
-              className="task-cat"
+               className={`task-cat ${taskCategory==="Events"? "active-category":""}`}
               onClick={() => {
                 setTaskCategory("Events");
               }}
@@ -144,14 +150,18 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
           </div>
 
           <div className="alert-category">
-            <div className="alert-box">{/* Icon and texgt */}</div>
+
+            <div className={`alert-box ${enableAlert && "active-alert"}` } onClick={()=>{setEnableAlert(!enableAlert)}}>
+              {enableAlert?<FontAwesomeIcon icon={faBell}/>:<FontAwesomeIcon icon={faBellSlash} />}
+            </div>
+
             <div className="alert-options">
-              <input type="radio" id="alert-on-check" name="alert"  onChange={() => setEnableAlert(true)}/>
+              <input type="radio" id="alert-on-check" name="alert"  onChange={() => setEnableAlert(true)} checked ={enableAlert}/>
               <label htmlFor="alert-on-check">Enable Alert</label>
             </div>
 
             <div className="alert-options">
-              <input type="radio" id="alert-off-check" name="alert" onChange={() => setEnableAlert(false)}/>
+              <input type="radio" id="alert-off-check" name="alert" onChange={() => setEnableAlert(false)} checked ={!enableAlert}/>
               <label htmlFor="alert-off-check">Disable Alert</label>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "./EditBox.styles.css";
 import { FetchedContext } from "../../../../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
+import { faBell, faBellSlash} from "@fortawesome/free-regular-svg-icons";
 
 const EditBox = (props) => {
   const today = new Date();
@@ -11,7 +11,7 @@ const EditBox = (props) => {
   const day = String(today.getDate()).padStart(2, "0");
   const formattedToday = `${year}-${month}-${day}`;
 
-  const { tasks, setTasks } = useContext(FetchedContext);
+  const { tasks, setTasks,notify } = useContext(FetchedContext);
   console.log("Props Received!", props);
 
   const {
@@ -69,13 +69,14 @@ const EditBox = (props) => {
         const updatedTasksFromLocalStorage = JSON.parse(
           localStorage.getItem("tasks")
         );
-
+        notify("Task Updated SuccessFully!", "success")
         // Update the tasks state with the parsed data
         setTasks(updatedTasksFromLocalStorage);
         setEditBox(!editBox);
       })
       .catch((err) => {
         console.log("Dummy Put Request!");
+  
       });
   };
 
@@ -150,7 +151,7 @@ const EditBox = (props) => {
 
           <div className="task-category-input">
             <div
-              className="task-cat"
+              className={`task-cat ${editData.category==="Personal"? "active-category":""}`}
               onClick={() => {
                 setEditData(() => ({ ...editData, category: "Personal" }));
               }}
@@ -158,7 +159,7 @@ const EditBox = (props) => {
               Personal
             </div>
             <div
-              className="task-cat"
+              className={`task-cat ${editData.category==="Work"? "active-category":""}`}
               onClick={() => {
                 setEditData(() => ({ ...editData, category: "Work" }));
               }}
@@ -166,7 +167,7 @@ const EditBox = (props) => {
               Work
             </div>
             <div
-              className="task-cat"
+              className={`task-cat ${editData.category==="School"? "active-category":""}`}
               onClick={() => {
                 setEditData(() => ({ ...editData, category: "School" }));
               }}
@@ -174,7 +175,7 @@ const EditBox = (props) => {
               School
             </div>
             <div
-              className="task-cat"
+              className={`task-cat ${editData.category==="Events"? "active-category":""}`}
               onClick={() => {
                 setEditData(() => ({ ...editData, category: "Events" }));
               }}
@@ -184,16 +185,21 @@ const EditBox = (props) => {
           </div>
 
           <div className="alert-category">
-            <div className="alert-box">
+            {/* <div className="alert-box">
               <FontAwesomeIcon icon={faBell} />
+            </div> */}
+
+<div className={`alert-box ${editData.alert && "active-alert"}` } onClick={()=>setEditData(() => ({ ...editData, alert: !editData.alert }))}>
+              {editData.alert?<FontAwesomeIcon icon={faBell}/>:<FontAwesomeIcon icon={faBellSlash} />}
             </div>
+
             <div className="alert-options">
-              <input type="radio" id="alert-on-check" name="alert" />
+              <input type="radio" id="alert-on-check" name="alert"  onChange={() => setEditData(() => ({ ...editData, alert: true }))} checked ={editData.alert} />
               <label htmlFor="alert-on-check">Enable Alert</label>
             </div>
 
             <div className="alert-options">
-              <input type="radio" id="alert-off-check" name="alert" />
+              <input type="radio" id="alert-off-check" name="alert" onChange={() => setEditData(() => ({ ...editData, alert: false }))} checked ={!editData.alert}/>
               <label htmlFor="alert-off-check">Disable Alert</label>
             </div>
           </div>

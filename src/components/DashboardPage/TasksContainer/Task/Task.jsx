@@ -6,7 +6,7 @@ import "./Task.styles.css";
 import { FetchedContext } from "../../../../App";
 
 const Task = ({ value, editTaskBox }) => {
-  const { deleteTask, tasks, setTasks } = useContext(FetchedContext);
+  const { deleteTask, tasks, setTasks, notify } = useContext(FetchedContext);
   const [isChecked, setIsChecked] = useState(value.completed);
 
   const handleCheckbox = (id) => {
@@ -21,35 +21,31 @@ const Task = ({ value, editTaskBox }) => {
     })
       .then((response) => response.json())
       .then((json) => {
-        setIsChecked(!isChecked);
+      })
+      .catch((err)=>{
+        notify("Error Updating Tasks!")
+      })
 
-        console.log(
-          "Change ID of task",
-          id,
-          "Checked:",
-          isChecked,
-          "Value.completed:",
-          value.completed
-        );
-        let updatedTasks = tasks.map((task) => {
-          if (task.id === id) {
-            task.completed = !task.completed;
-            return task;
-          }
-
+      if(isChecked){
+        notify("Task Updated Successfully! Task Moved to Pending!", "success")
+      }else{
+        notify("Task Updated Successfully! Task Moved to Completed!", "success")
+      }
+      setIsChecked(!isChecked);
+      let updatedTasks = tasks.map((task) => {
+        if (task.id === id) {
+          task.completed = !task.completed;
           return task;
-        });
-        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-        setInterval(() => {
-          setTasks(updatedTasks);
-        }, 300);
-      });
-  };
-  // To update the value because react ony initialise it value once and after props change it does not updates the UI so to achieve that we will use useEffect hook
-  // useEffect(()=>{
-  //   setIsChecked(value.completed)
-  // },[value.completed]);
+        }
 
+        return task;
+      });
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+      setInterval(() => {
+        setTasks(updatedTasks);
+      }, 100);
+  };
+  
   const openDetails = (e) => {
     console.log("Open Details Box!");
   };
