@@ -18,9 +18,9 @@ const UserAccount = () => {
         <div className="notification-box">
           {tasks
             .filter((task) => task.alert === true)
-            .map((task) => {
+            .map((task, index) => {
               return (
-                <div className="notifications">
+                <div className="notifications" key={index}>
                   <h5>{task.title}</h5>
                   <p>
                     {task.date}, {task.time}

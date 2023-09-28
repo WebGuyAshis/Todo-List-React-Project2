@@ -4,6 +4,7 @@ import userImg from "../../../assets/images/userImg.png";
 import { DashContext } from "../DashboardPage";
 
 const DashNav = () => {
+  const {isDash, setIsDash} = useContext(DashContext);
   const dashClick = ()=>{
     setIsDash(true)
     console.log(isDash);
@@ -13,7 +14,6 @@ const DashNav = () => {
     console.log(isDash);
 
   }
-  const {isDash, setIsDash} = useContext(DashContext);
   return (
     <div className="dash-nav">
       {/* Dashboard Logo */}

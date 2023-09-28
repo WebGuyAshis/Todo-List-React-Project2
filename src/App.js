@@ -14,7 +14,7 @@ const FetchedContext = createContext();
 function App() {
 
   const [tasks, setTasks] = useState([]);
-  console.log("Tasks of States:", tasks);
+  // console.log("Tasks of States:", tasks);
 
   const setDataToLocalStorage = (data) => {
     localStorage.setItem("tasks", JSON.stringify(data));
@@ -27,54 +27,59 @@ function App() {
           "https://jsonplaceholder.typicode.com/todos"
         );
         const data = await response.json();
-        console.log("Data From API:", data);
+        // console.log("Data From API:", data);
         setTasks(data);
         setDataToLocalStorage(data);
       } catch (error) {
+        notify("Error Fetching Tasks from API!", "error")
         console.log("Error Fetching Tasks!", error);
       }
     };
 
     const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
+    if (storedTasks && storedTasks.length==="") {
       setTasks(JSON.parse(storedTasks));
+      console.log(storedTasks,"stored tasks", storedTasks.length);
     } else {
       fetchData();
     }
   }, []);
 
+
+  // Deleting Task
   const deleteTask = (id) => {
+    console.log("Delete Task");
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
       method: "DELETE",
-    });
+    })
     let updatedTask = tasks.filter((task)=>task.id !== id);
     localStorage.setItem("tasks", JSON.stringify(updatedTask));
     setTasks(JSON.parse(localStorage.getItem('tasks')))
-    console.log("Delted");
+    console.log("Deleted");
+    notify("Task Deleted SuccessFully!","success")
   };
 
-  const editTask = ()=>{
+  // const editTask = ()=>{
     
-  }
+  // }
 
-  const [pending, setPending] = useState(0);
-  const [completed, setCompleted] = useState(0);
+  // const [pending, setPending] = useState(0);
+  // const [completed, setCompleted] = useState(0);
 
-  useEffect(() => {
-    if (tasks) {
-      const completed = tasks.filter((task) => task.completed === true);
-      const pending = tasks.filter((task) => task.completed !== true);
+  // useEffect(() => {
+  //   if (tasks) {
+  //     const completed = tasks.filter((task) => task.completed === true);
+  //     const pending = tasks.filter((task) => task.completed !== true);
 
-      setCompleted(completed);
-      setPending(pending);
+  //     setCompleted(completed);
+  //     setPending(pending);
 
-      // console.log("Pending:",pending);
-      // console.log("Completed:", completed);
-    }
-  }, [tasks]);
+  //     // console.log("Pending:",pending);
+  //     // console.log("Completed:", completed);
+  //   }
+  // }, [tasks]);
 
     const notify = (msg,type) => {
-      console.log("Show Notification!");
       if(type==="success"){
         toast.success(msg);
       }else{
@@ -86,10 +91,10 @@ function App() {
       value={{
         tasks,
         setTasks,
-        pending,
-        setPending,
-        completed,
-        setCompleted,
+        // pending,
+        // setPending,
+        // completed,
+        // setCompleted,
         deleteTask,notify
       }}
     >

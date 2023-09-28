@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-    background-color: rgb(240, 240, 240,0.4);
+    background-color: rgba(255, 255, 255, 0.795);
 
 }
 .tasks-category-item{
@@ -54,7 +54,7 @@
 /* Toggler */
 .pen-comp-toggler{
     height: 35px;
-    background-color: rgb(240, 240, 240,0.4);
+    background-color: rgba(255, 255, 255, 0.747);
     border-radius: 35px;
     display: flex;
 }

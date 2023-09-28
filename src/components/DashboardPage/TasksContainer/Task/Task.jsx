@@ -8,12 +8,14 @@ import { FetchedContext } from "../../../../App";
 const Task = ({ value, editTaskBox }) => {
   const { deleteTask, tasks, setTasks, notify } = useContext(FetchedContext);
   const [isChecked, setIsChecked] = useState(value.completed);
+  
 
   const handleCheckbox = (id) => {
+    setIsChecked(!isChecked);
     fetch("https://jsonplaceholder.typicode.com/posts/1", {
       method: "PATCH",
       body: JSON.stringify({
-        title: "foo",
+        completed:isChecked ,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -21,30 +23,28 @@ const Task = ({ value, editTaskBox }) => {
     })
       .then((response) => response.json())
       .then((json) => {
+        console.log("Tasks Updated!", json);
+        let updatedTasks = tasks.map((task) => {
+          if (task.id === id) {
+            task.completed = !task.completed;
+            console.log("Task Updated in IF ELSe");
+            return task;
+          }
+          return task;
+        });
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+        setTasks(updatedTasks);
+        if(isChecked){
+          notify("Task Updated Successfully! Task Moved to Pending!", "success")
+        }else{
+          notify("Task Updated Successfully! Task Moved to Completed!", "success")
+        }  
       })
       .catch((err)=>{
         notify("Error Updating Tasks!")
       })
-
-      if(isChecked){
-        notify("Task Updated Successfully! Task Moved to Pending!", "success")
-      }else{
-        notify("Task Updated Successfully! Task Moved to Completed!", "success")
-      }
-      setIsChecked(!isChecked);
-      let updatedTasks = tasks.map((task) => {
-        if (task.id === id) {
-          task.completed = !task.completed;
-          return task;
-        }
-
-        return task;
-      });
-      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-      setInterval(() => {
-        setTasks(updatedTasks);
-      }, 100);
   };
+
   
   const openDetails = (e) => {
     console.log("Open Details Box!");

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./TasksContainer.styles.css";
 import { Link } from "react-router-dom";
 import plus from "../../../assets/svg/plus.svg";
@@ -7,11 +7,12 @@ import { FetchedContext } from "../../../App";
 import AddTaskBox from "./AddTaskBox";
 import EditBox from "./EditBox";
 
-
 const TasksContainer = () => {
   const [taskBox, setTaskBox] = useState(false);
   const [isCompletedTab, setIsCompletedTab] = useState(false);
-  const { tasks, setTasks, completed, pending ,notify } = useContext(FetchedContext);
+
+  // Accessing Data Compming from provider 
+  const { tasks, setTasks } =useContext(FetchedContext);
 
   const showPending = () => {
     setIsCompletedTab(false);
@@ -32,7 +33,6 @@ const TasksContainer = () => {
     alert: false,
   });
 
-  
   const editTaskBox = (id) => {
     console.log("Value of editbox", editBox);
     setEditBox(!editBox);
@@ -49,23 +49,26 @@ const TasksContainer = () => {
     setEditBox,
   };
 
-  const [searchInput, setSearcInput] = useState('');
-  const [searchedTask, setSearchedTask] = useState(null)
-  
+  const [searchInput, setSearchInput] = useState("");
+  const [searchedTask, setSearchedTask] = useState(null);
+
   const handleSearch = (e) => {
-    e.preventDefault();
-    console.log('Handling Search, value:', searchInput);
-    if(searchInput=== ""){
+    let search = e.target.value;
+    // e.preventDefault();
+    console.log("Handling Search, value:", search);
+    if (search === "") {
       console.log("Search Field is empty");
+      setSearchedTask(null);
       setTasks(tasks);
-      return;
+      // return;
+    } else {
+      const regex = new RegExp(search, "i");
+      const searchedTasks = tasks.filter((task) => regex.exec(task.title));
+
+      console.log("Searched Tasks:", searchedTasks);
+      setSearchedTask(searchedTasks);
+      // setTasks(searchedTasks)
     }
-  
-    const regex = new RegExp(searchInput, 'i');
-    const searchedTasks = tasks.filter((task) => regex.exec(task.title));
-  
-    console.log('Searched Tasks:', searchedTasks);
-    setSearchedTask(searchedTasks)
   };
 
   return (
@@ -105,28 +108,35 @@ const TasksContainer = () => {
           </div>
         </div>
       </div>
-      <form className="search-container" onSubmit={handleSearch}>
-        <input type="text" placeholder="Search"  value={searchInput} className="search-bar" name="searchbox" onChange={(e)=>{setSearcInput(e.target.value)}}/>
-        <input type="submit" value="Search" className="text-search-btn"/>
-      </form>
-
-      {/* <div className="tasks-container">
-            {tasks.map((task)=>{
-              if(task.completed === isCompletedTab){
-                return <Task key={task.id} value={task} editTaskBox={editTaskBox} />
-              }
-              return null;
-            })}
-      </div> */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchInput}
+          className="search-bar"
+          name="searchbox"
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+            handleSearch(e);
+          }}
+        />
+        <input value="Search" type="button" className="text-search-btn" />
+      </div>
+      {/* Rendering Task Component and Handling Search Also */}
       <div className="tasks-container">
-        {searchedTask?
-        searchedTask.map((task)=>{
-          return <Task key={task.id} value={task} editTaskBox={editTaskBox} />
-        }):tasks
-          .filter((task) => task.completed === isCompletedTab)
-          .map((task) => (
-              <Task key={task.id} value={task} editTaskBox={editTaskBox} />
-          ))}
+        {searchedTask !== null
+          ? searchedTask.map((task) => {
+              return (
+                <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+              );
+            })
+          : tasks
+              .filter((task) => task.completed === isCompletedTab)
+              .map((task) => {
+                return (
+                  <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+                );
+              })}
       </div>
       <div
         className="add-tasks"

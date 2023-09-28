@@ -130,13 +130,15 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { FetchedContext } from '../../../../App';
 
 function PieChartComponent(props) {
-  const { tasks, pending, completed } = useContext(FetchedContext);
+  const { tasks } = useContext(FetchedContext);
+  // const { tasks, pending, completed } = useContext(FetchedContext);
 
   useEffect(() => {
+    console.log("From Use Effect PIE CHART");
     
     // Check if tasks data is available before rendering the chart
     if (tasks) {
-      console.log("useEffect is running", tasks);
+      // console.log("useEffect is running", tasks);
       let root = am5.Root.new("chartdiv");
 
       // Set themes
@@ -165,8 +167,8 @@ function PieChartComponent(props) {
 
       // Set data
       series.data.setAll([
-        { value: completed.length, category: "Completed", },
-        { value: pending.length, category: "Pending",}
+        { value: tasks.filter(task => task.completed).length, category: "Completed", },
+        { value: tasks.filter(task => !task.completed).length, category: "Pending",}
       ]);
 
       // Create legend
@@ -183,7 +185,7 @@ function PieChartComponent(props) {
         root.dispose();
       };
     }
-  }, [tasks,completed,pending]);
+  }, [tasks]);
 
   // Conditionally render the chart based on tasks availability
   return (
