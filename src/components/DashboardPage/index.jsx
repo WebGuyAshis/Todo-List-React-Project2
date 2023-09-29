@@ -6,6 +6,7 @@ import TasksContainer from "./TasksContainer";
 import UserAccount from "./UserAccount";
 import { FetchedContext } from "../../App";
 import userImg from "../../assets/images/userImg.png";
+import { Link } from "react-router-dom";
 
 const DashContext = createContext();
 
@@ -30,10 +31,13 @@ const DashboardPage = () => {
       </DashContext.Provider>
 
       {openUserAccount && (
-        <div className="user-box-background" onClick={()=>{
-          setOpenUserAccount(!openUserAccount);
-        }}>
-          <div className="user-account-container"id="user-account">
+        <div
+          className="user-box-background"
+          onClick={() => {
+            setOpenUserAccount(!openUserAccount);
+          }}
+        >
+          <div className="user-account-container" id="user-account">
             <div className="user-image">
               <img src={userImg} alt="" />
             </div>
@@ -56,7 +60,9 @@ const DashboardPage = () => {
               </div>
             </div>
 
-            <div className="logout">Logout</div>
+            <Link className="logout" to="/">
+              Logout
+            </Link>
           </div>
         </div>
       )}

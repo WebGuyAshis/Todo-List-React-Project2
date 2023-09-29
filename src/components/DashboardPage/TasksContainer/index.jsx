@@ -12,8 +12,12 @@ const TasksContainer = () => {
   const [taskBox, setTaskBox] = useState(false);
   const [isCompletedTab, setIsCompletedTab] = useState(false);
 
-  // Accessing Data Compming from provider 
-  const { tasks, setTasks,isDescriptionOpen } =useContext(FetchedContext);
+  // Accessing Data Compming from provider
+  const { tasks, setTasks, isDescriptionOpen } = useContext(FetchedContext);
+
+  // setting up Filter Task Category for work events school
+
+  const [filterTaskCategory, setFilterTaskCategory] = useState("all");
 
   const showPending = () => {
     setIsCompletedTab(false);
@@ -73,7 +77,20 @@ const TasksContainer = () => {
   };
 
   let date = new Date();
-  let monthsName = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
+  let monthsName = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   let day = date.getDate();
   let monthIndex = date.getMonth();
   let month = monthsName[monthIndex];
@@ -82,23 +99,45 @@ const TasksContainer = () => {
   return (
     <div className="tasks-main-container">
       <div className="tasks-category">
-        <Link className="tasks-category-item active-item" to="/">
+        <div
+          className={`tasks-category-item ${filterTaskCategory==="all" ? "active-item" : ""}`}
+          onClick={() => {
+            setFilterTaskCategory("all");
+          }}
+        >
           All
-        </Link>
-        <Link className="tasks-category-item" to="/">
+        </div>
+        <div
+          className={`tasks-category-item ${filterTaskCategory==="Personal" ? "active-item" : ""}`}
+          onClick={() => {
+            setFilterTaskCategory("Personal");
+          }}
+        >
           Personal
-        </Link>
-        <Link className="tasks-category-item" to="/">
+        </div>
+        <div
+          className={`tasks-category-item ${filterTaskCategory==="Work" ? "active-item" : ""}`}
+          onClick={() => {
+            setFilterTaskCategory("Work");
+          }}
+        >
           Work
-        </Link>
-        <Link className="tasks-category-item" to="/">
+        </div>
+        <div
+          className={`tasks-category-item ${filterTaskCategory==="Events" ? "active-item" : ""}`}
+          onClick={() => {
+            setFilterTaskCategory("Events");
+          }}
+        >
           Events
-        </Link>
+        </div>
       </div>
       <div className="container-header">
         <div className="heading">
           <div className="heading-tasks">Tasks</div>
-          <div className="date">{month} {day}, {year}</div>
+          <div className="date">
+            {month} {day}, {year}
+          </div>
         </div>
 
         <div className="pen-comp-toggler">
@@ -132,7 +171,32 @@ const TasksContainer = () => {
       </div>
       {/* Rendering Task Component and Handling Search Also */}
       <div className="tasks-container">
-        {searchedTask !== null
+        {filterTaskCategory === "all"
+          ? tasks
+              .filter((task) => task.completed === isCompletedTab)
+              .map((task) => {
+                return (
+                  <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+                );
+              })
+          : filterTaskCategory === "Personal"
+          ? tasks
+              .filter(
+                (task) => task.category === "Personal" || !task.category)
+              .map((task) => {
+                return (
+                  <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+                );
+              })
+          : filterTaskCategory
+          ? tasks
+              .filter((task) => task.category === filterTaskCategory)
+              .map((task) => {
+                return (
+                  <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+                );
+              })
+          : searchedTask !== null
           ? searchedTask.map((task) => {
               return (
                 <Task key={task.id} value={task} editTaskBox={editTaskBox} />
@@ -160,7 +224,6 @@ const TasksContainer = () => {
       {console.log("Value of Editbox befor Logging!", editBox)}
       {editBox && <EditBox {...editBoxProps} />}
       {isDescriptionOpen && <Description editTaskBox={editTaskBox} />}
-
     </div>
   );
 };
