@@ -72,6 +72,13 @@ const TasksContainer = () => {
     }
   };
 
+  let date = new Date();
+  let monthsName = ["January", "February","March","April","May","June","July","August","September","October","November","December"];
+  let day = date.getDate();
+  let monthIndex = date.getMonth();
+  let month = monthsName[monthIndex];
+  let year = date.getFullYear();
+
   return (
     <div className="tasks-main-container">
       <div className="tasks-category">
@@ -91,7 +98,7 @@ const TasksContainer = () => {
       <div className="container-header">
         <div className="heading">
           <div className="heading-tasks">Tasks</div>
-          <div className="date">August 23, 2023</div>
+          <div className="date">{month} {day}, {year}</div>
         </div>
 
         <div className="pen-comp-toggler">
