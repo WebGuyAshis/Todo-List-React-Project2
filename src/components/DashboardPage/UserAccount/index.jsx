@@ -28,20 +28,6 @@ const UserAccount = () => {
                 </div>
               );
             })}
-
-          {/* 
-                    <div className="notifications">
-                        <h5>Doc's Appointment</h5>
-                        <p>21st August, 7:00 AM</p>
-                    </div>
-                    <div className="notifications">
-                    <h5>Set Alert to See</h5>
-                        <p>21st August, 7:00 AM</p>
-                    </div>
-                    <div className="notifications">
-                    <h5>Set Alert to See</h5>
-                        <p>21st August, 7:00 AM</p>
-                    </div> */}
         </div>
       </div>
 

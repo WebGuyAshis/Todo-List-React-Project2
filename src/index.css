@@ -17,6 +17,9 @@ body {
   background-image: url("./assets/images/18773500_6040004.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 body::before {
@@ -24,11 +27,19 @@ body::before {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   z-index: -1;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+}
+
+.App{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom:10px ;
 }
 
 code {

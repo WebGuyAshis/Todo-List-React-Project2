@@ -1,6 +1,7 @@
 .dashboard-container {
   width: 60%;
-  height: calc(100% - 14vh);
+  /* height: calc(100% - 14vh); */
+  height: 100%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -8,11 +9,10 @@
   box-sizing: border-box;
   padding: 40px;
   flex: 1;
-  margin-left: 40px;
+  /* margin-left: 40px; */
   gap: 10px;
   /* color: white; */
   background-color: rgb(240, 240, 240,0.4);
-
 }
 .dash-heading {
   width: 100%;
@@ -58,4 +58,12 @@
 #chartdiv {
   background-color: rgb(233, 233, 233);
   border-radius: 20px;
+}
+
+
+@media screen and (max-width:500px){
+  .dashboard-container {
+    padding: 20px;
+  }
+
 }

@@ -3,16 +3,16 @@ nav{
     justify-content: space-between;
     align-items: center;
     height: 7vh;
-    position: fixed;
-    width: 100vw;
-    top: 0;
-    left: 0;
+    /* position: fixed; */
+    width: 100%;
+    overflow: hidden;
+    /* top: 0; */
+    /* left: 0; */
     /* background-color: aqua */
 }
 
 .logo{
     font-size:2rem ;
-    margin-left: 50px;
     color: rgb(219, 243, 255);
     cursor: pointer;
 }
@@ -24,7 +24,8 @@ nav{
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
-    gap: 50px;
+    gap: 40px;
+
 }
 .nav-list-item{
     list-style: none;
@@ -48,5 +49,63 @@ nav{
     border-radius: 20px;
     background-color: rgb(255, 37, 106);
     color: rgb(223, 223, 223);
+}
+.hamburger{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    display: none;
+}
+.nav-box{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
 
+.nav-list-box{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgb(214, 214, 214);
+    padding: 10px 20px;
+    gap: 10px;
+}
+
+.nav-list-item-ham{
+    list-style: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: rgb(52, 52, 52);
+    padding: 10px;
+}
+.nav-list-item-ham:hover{
+    color: rgb(255, 255, 255);
+    transition: all 0.5s;
+    background-color: rgb(55, 168, 244);
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width:850px) {
+    .auth-btn{
+        display: none;
+    }
+}
+
+@media screen and (max-width:600px) {
+   .nav-list{
+    display: none;
+   }
+   .hamburger{display: block;}
 }

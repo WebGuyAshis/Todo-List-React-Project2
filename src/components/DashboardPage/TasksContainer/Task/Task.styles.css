@@ -9,7 +9,7 @@
   border-radius: 10px;
   box-sizing: border-box;
   /* padding: 8px; */
-  height: 70px;
+  min-height: 60px;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -28,22 +28,23 @@
 
 
 .task-description {
-  width: 50%;
+  width: 50%; 
   /* background-color: burlywood; */
   margin-left: 10px;
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
-/* .task-desc {
-display: flex;
-} */
+
+.task-desc{
+  width: 100%;
+}
 .task-heading {
-  /* width: 100%; */
   font-weight: 600;
   color:var(--primary-color);
   font-size: 18px;
-  /* background-color: aqua; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .task-category {
@@ -78,3 +79,8 @@ input[type="Checkbox"]{
   accent-color: var(--primary-color);
 }
 
+@media screen and (max-width:500px) {
+  .task-category{
+    display: none;
+  }
+}

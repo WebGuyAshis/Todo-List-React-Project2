@@ -11,11 +11,15 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
 const FetchedContext = createContext();
+
 function App() {
 
   const [tasks, setTasks] = useState([]);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [descriptionData, setDescriptionData] = useState({})
+
+  // Showing UserAccount and Notification
+  const [openUserAccount, setOpenUserAccount] = useState(false);
 
   const setDataToLocalStorage = (data) => {
     localStorage.setItem("tasks", JSON.stringify(data));
@@ -110,7 +114,9 @@ function App() {
         showDescription,
         descriptionData,
         setDescriptionData,
-        notify
+        notify,
+        openUserAccount,
+        setOpenUserAccount
       }}
     >
       <div className="App">
@@ -120,6 +126,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/about" />
           </Routes>
         </Router>
         <Footer />

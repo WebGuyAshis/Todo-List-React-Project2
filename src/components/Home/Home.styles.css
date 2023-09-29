@@ -1,11 +1,14 @@
 .home-page{
-    /* background-color: rgb(3, 20, 36); */
     display: flex;
+    flex-direction: column;
     width: 100vw;
-    height: 100vh;
-    /* background-image: url('../../assets/images/dippyaman-nath-WTjoXtFZ2fw-unsplash.jpg'); */
-    /* background-size: cover; */
-
+    height: 93vh;
+    gap: 10px;
+    padding: 0 40px;
+}
+.home-page-content{
+    display: flex;
+    height: 100%;
 }
 /* Welcome Text */
 .wel-text{
@@ -13,14 +16,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 50px;
 }
 .wel-heading{
-    font-size: 4rem;
+    font-size: 70px;
     color: rgb(232, 232, 232);
     margin: 0;
 }
-.wel-heading div{
+.wel-heading span{
     color: rgb(0, 195, 255);
 }
 
@@ -29,16 +31,16 @@
     background-color: rgb(255, 65, 138);
     width: 150px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
     padding: 10px 0;
     border-radius: 25px;
     font-size: 1.2rem;
     color: rgb(232, 232, 232);
-    cursor: pointer;
+    text-decoration: none;
 }
 .wel-quote{
     font-size: 1rem;
-    color: rgb(131, 131, 131);
+    color: rgb(191, 191, 191);
 }
 
 /* Welcome Page Logo */
@@ -50,8 +52,44 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    overflow: hidden;
     margin-right: 20px;
 }
-/* .wel-page-img img{
-    width: 100%;
-} */
+.responsive-img{
+    display: none;
+}
+
+/* Media Queries */
+
+@media screen and (max-width:920px){
+    .home-page-content{
+    flex-direction: column-reverse;
+    }
+    .wel-page-img{
+        display: none;
+    }
+
+    .responsive-img{
+        display: block;
+        height: 300px;
+        background-image: url(../../assets/svg/homeimg.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+@media screen and (max-width:750px){
+    .wel-heading{
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width:500px){
+    .wel-heading{
+        font-size: 40px;
+    }
+    .home-page{
+    padding: 0 10px;
+    }
+}

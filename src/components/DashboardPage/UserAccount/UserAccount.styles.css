@@ -1,9 +1,10 @@
 .user-account-container{
     width: 300px;
     /* background-color: rgb(206, 206, 206); */
-    height: calc(100% - 14vh);
+    /* height: calc(100% - 14vh); */
+    height: 100%;
     border-radius: 20px;
-    margin-right: 40px;
+    /* margin-right: 40px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,4 +80,12 @@
     position: absolute;
     bottom: 20px;
     text-decoration: none;
+}
+
+
+
+@media screen and (max-width:850px) {
+    .user-account-container{
+        display: none;
+    }
 }

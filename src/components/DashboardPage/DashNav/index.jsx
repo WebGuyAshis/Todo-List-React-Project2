@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import "./DashNav.styles.css";
 import userImg from "../../../assets/images/userImg.png";
-import { DashContext } from "../DashboardPage";
+import { DashContext } from "..";
+import { FetchedContext } from "../../../App";
 
 const DashNav = () => {
+
   const {isDash, setIsDash} = useContext(DashContext);
+  const {openUserAccount, setOpenUserAccount} = useContext(FetchedContext);
+
   const dashClick = ()=>{
     setIsDash(true)
     console.log(isDash);
@@ -16,11 +20,9 @@ const DashNav = () => {
   }
   return (
     <div className="dash-nav">
-      {/* Dashboard Logo */}
       <div className="dash-logo">
-        todo<span>List</span>
+        <span>t</span>odoList
       </div>
-
       {/* Dash/Tasks Toggler */}
       <div className="dash-tasks-togg">
         <div className={`dash-tog-btn dash-btn ${isDash?"active-toggle" : ""}`} onClick={dashClick}>
@@ -32,8 +34,15 @@ const DashNav = () => {
       </div>
 
       <div className="user-account-name">
+        {/* For Responsiveness */}
+        <div className="user-img-state" onClick={()=>{
+          setOpenUserAccount(!openUserAccount);
+        }}>
+          <img className="user-img-img" src={userImg} alt="" />
+        </div>
+        {/* For Regular Use */}
         <div className="user-img">
-          <img className="user-img" src={userImg} alt="" />
+        <img className="user-img" src={userImg} alt="" />
         </div>
         <span className="user-name">Hi, Ashis</span>
       </div>
