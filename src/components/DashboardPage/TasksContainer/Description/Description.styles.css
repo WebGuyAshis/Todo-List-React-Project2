@@ -1,0 +1,141 @@
+
+.desc-background{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.desc-box{
+    
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-color: #EDEDED;
+    overflow: hidden;
+}
+.desc-heading{
+    font-size: 30px;
+    max-width: 340px;
+    overflow-wrap:break-word;
+}
+.cat-alert-desc{
+    display: flex;
+    gap: 10px;
+}
+.cat-desc{
+    height: 40px;
+    border-radius: 40px;
+    background-color: #D9D9D9;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding: 0 10px;
+}
+.alert-desc{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    color: #ffffff;
+    background-color: rgb(37, 159, 230);
+}
+
+.description-desc{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    max-width: 340px;
+    /* overflow: hidden; */
+    overflow-wrap: break-word;
+}
+
+.date-time-desc{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.date-desc{
+    height: 40px;
+    padding: 0 20px;
+    background-color: #D9D9D9;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    border-radius: 40px;
+}
+.time-desc{
+    height: 40px;
+    padding: 0 20px;
+    background-color: #D9D9D9;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    border-radius: 40px;
+
+}
+.btn-desc{
+    display: flex;
+    gap: 10px;
+}
+
+.btn-cat{
+    background-color: #D9D9D9;
+    height: 40px;
+    flex: 1;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    border-radius: 40px;
+}
+
+.edit-desc{
+border: 2px solid rgb(37, 159, 230);
+cursor: pointer;
+}
+
+
+.delete-desc{
+    border: 2px solid rgb(246, 34, 34);
+    cursor: pointer;
+}
+
+
+.close-desc{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    height: 30px;
+    width: 30px;
+    background-color: rgb(229, 229, 229);
+    border: 0.5px solid red;
+    color: rgb(255, 0, 0);
+    transition: all 0.3s;
+    border-radius: 50%;
+    font-size: 23px;
+    cursor: pointer;
+}
+.close-desc:hover{
+    background-color: rgb(240, 53, 53);
+    color: white;
+}
+
+.center-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

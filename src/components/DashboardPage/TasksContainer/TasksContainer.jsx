@@ -6,13 +6,14 @@ import Task from "./Task";
 import { FetchedContext } from "../../../App";
 import AddTaskBox from "./AddTaskBox";
 import EditBox from "./EditBox";
+import Description from "./Description";
 
 const TasksContainer = () => {
   const [taskBox, setTaskBox] = useState(false);
   const [isCompletedTab, setIsCompletedTab] = useState(false);
 
   // Accessing Data Compming from provider 
-  const { tasks, setTasks } =useContext(FetchedContext);
+  const { tasks, setTasks,isDescriptionOpen } =useContext(FetchedContext);
 
   const showPending = () => {
     setIsCompletedTab(false);
@@ -151,6 +152,8 @@ const TasksContainer = () => {
       {taskBox && <AddTaskBox taskBox={taskBox} setTaskBox={setTaskBox} />}
       {console.log("Value of Editbox befor Logging!", editBox)}
       {editBox && <EditBox {...editBoxProps} />}
+      {isDescriptionOpen && <Description editTaskBox={editTaskBox} />}
+
     </div>
   );
 };

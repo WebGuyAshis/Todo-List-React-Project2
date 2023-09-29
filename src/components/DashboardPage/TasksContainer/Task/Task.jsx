@@ -6,7 +6,7 @@ import "./Task.styles.css";
 import { FetchedContext } from "../../../../App";
 
 const Task = ({ value, editTaskBox }) => {
-  const { deleteTask, tasks, setTasks, notify } = useContext(FetchedContext);
+  const { deleteTask, tasks, setTasks, notify,showDescription } = useContext(FetchedContext);
   const [isChecked, setIsChecked] = useState(value.completed);
   
 
@@ -46,12 +46,12 @@ const Task = ({ value, editTaskBox }) => {
   };
 
   
-  const openDetails = (e) => {
-    console.log("Open Details Box!");
-  };
+  // const openDetails = (e) => {
+  //   console.log("Open Details Box!");
+  // };
 
   return (
-    <div className="task" onClick={openDetails}>
+    <div className="task">
       <div className="task-description">
         <input
           type="checkbox"
@@ -61,7 +61,9 @@ const Task = ({ value, editTaskBox }) => {
           }}
         />
         {/* <input type="checkbox" /> */}
-        <div className="task-desc">
+        <div className="task-desc" onClick={() => {
+            showDescription(value.id);
+          }}>
           <div className="task-heading">{value.title}</div>
 
           {/* <span className="time-left">

@@ -14,7 +14,8 @@ const FetchedContext = createContext();
 function App() {
 
   const [tasks, setTasks] = useState([]);
-  // console.log("Tasks of States:", tasks);
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+  const [descriptionData, setDescriptionData] = useState({})
 
   const setDataToLocalStorage = (data) => {
     localStorage.setItem("tasks", JSON.stringify(data));
@@ -37,7 +38,7 @@ function App() {
     };
 
     const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks && storedTasks.length==="") {
+    if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
       console.log(storedTasks,"stored tasks", storedTasks.length);
     } else {
@@ -57,6 +58,7 @@ function App() {
     setTasks(JSON.parse(localStorage.getItem('tasks')))
     console.log("Deleted");
     notify("Task Deleted SuccessFully!","success")
+    isDescriptionOpen && setIsDescriptionOpen(false);
   };
 
   // const editTask = ()=>{
@@ -79,6 +81,17 @@ function App() {
   //   }
   // }, [tasks]);
 
+
+    const showDescription = (id)=>{
+      console.log("Description ID", id);
+      console.log("Open Dessc");
+      setIsDescriptionOpen(!isDescriptionOpen)
+      const updatedDesc = tasks.find((task) => task.id === id);
+      setDescriptionData(updatedDesc)
+      console.log("Description Data:", descriptionData);
+    }
+
+
     const notify = (msg,type) => {
       if(type==="success"){
         toast.success(msg);
@@ -91,11 +104,13 @@ function App() {
       value={{
         tasks,
         setTasks,
-        // pending,
-        // setPending,
-        // completed,
-        // setCompleted,
-        deleteTask,notify
+        deleteTask,
+        isDescriptionOpen, 
+        setIsDescriptionOpen,
+        showDescription,
+        descriptionData,
+        setDescriptionData,
+        notify
       }}
     >
       <div className="App">
