@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
 import "react-toastify/dist/ReactToastify.min.css";
+import About from "./components/About";
 
 const FetchedContext = createContext();
 
@@ -126,7 +127,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/about" />
+            <Route path="/about" element={<About/>}/>
           </Routes>
         </Router>
         <Footer />
