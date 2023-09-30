@@ -13,27 +13,53 @@
     position: relative;
     gap: 10px;
     /* margin-left: 40px; */
+    position: relative;
+}
+.task-category-background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(7px);
+    background-color: rgba(201, 201, 201, 0.3);
 }
 .tasks-category{
-    height: 35px;
-    border-radius: 35px;
-    /* width: 400px; */
+    /* height: 35px; */
+    border-radius: 10px;
+    width: 150px;
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    /* align-items: center; */
+    /* gap: 10px; */
+    /* margin-top: 20px; */
     background-color: rgba(255, 255, 255, 0.795);
-
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
 }
 .tasks-category-item{
-    width: 80px;
-    height: 35px;
-    border-radius: 35px;
-    display: flex;
+    /* width: 80px; */
+    /* height: 35px; */
+    /* border-radius: 35px; */
+    padding: 7px 20px;
+    border-radius: 10px;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
-    text-decoration: none;
+    align-items: center; */
+    /* text-decoration: none; */
     color: black;
     cursor: pointer;
+}
+.tasks-category-item:hover
+{
+    color:  rgb(0, 157, 255);
 }
 
 
@@ -41,10 +67,15 @@
 
 .container-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
     align-items: center;
-    /* background-color: aqua; */
+
+}
+
+.heading{
+    width: 100%;
+    margin-top: 20px;
 }
 
 .heading-tasks{
@@ -61,7 +92,7 @@
     border-radius: 35px;
     display: flex;
 }
-.complete-btn, .pending-btn{
+.complete-btn, .pending-btn, .all-btn{
     width: 100px;
     display: flex;
     align-items: center;
@@ -109,7 +140,7 @@
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    margin: 30px 40px 40px 40px;
+    margin: 0px 40px 40px 40px;
     overflow-x: hidden;
     position: relative;
 }
@@ -131,10 +162,18 @@
     cursor: pointer;
 }
 .active-item{
-    background-color: rgb(0, 174, 255);
-    color: white;
+    background-color: rgb(0, 174, 255) !important;
+    color: white !important;
 }
 
+.three-dot-menu{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: rgb(237, 237, 237);
+    font-size: 25px;
+}
 
 
 @media screen and (max-width:700px) {
@@ -151,7 +190,7 @@
 }
 
 @media screen and (max-width:500px) {
-    .tasks-category{
-    display: none;
+    .heading{
+        margin-top: 0;
     }
 }

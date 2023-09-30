@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
 import "react-toastify/dist/ReactToastify.min.css";
 import About from "./components/About";
+import { type } from "@testing-library/user-event/dist/type";
 
 const FetchedContext = createContext();
 
@@ -42,10 +43,17 @@ function App() {
       }
     };
 
-    const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-      console.log(storedTasks,"stored tasks", storedTasks.length);
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"))
+    console.log("Stored Tasks after assigning", storedTasks,storedTasks.length);
+    if (storedTasks && storedTasks.length>0) {
+      setTasks(storedTasks);
+      console.log(storedTasks,"stored tasks", storedTasks.length, "Stored Task At 0", storedTasks[0],"Stored Task At 1",storedTasks[1]);
+      console.log("Type of", typeof(storedTasks))
+      console.log("Type of 0", typeof(storedTasks[0]))
+      console.log("Type of 1", typeof(storedTasks[1]))
+      console.log("Type of 2", typeof(storedTasks[2]))
+
+
     } else {
       fetchData();
     }
