@@ -9,7 +9,7 @@ const Task = ({ value, editTaskBox }) => {
   const { deleteTask, tasks, setTasks, notify,showDescription } = useContext(FetchedContext);
   const [isChecked, setIsChecked] = useState(value.completed);
   
-
+// Updating Task Completition
   const handleCheckbox = (id) => {
     setIsChecked(!isChecked);
     fetch("https://jsonplaceholder.typicode.com/posts/1", {
@@ -23,11 +23,9 @@ const Task = ({ value, editTaskBox }) => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log("Tasks Updated!", json);
         let updatedTasks = tasks.map((task) => {
           if (task.id === id) {
             task.completed = !task.completed;
-            console.log("Task Updated in IF ELSe");
             return task;
           }
           return task;
@@ -45,11 +43,6 @@ const Task = ({ value, editTaskBox }) => {
       })
   };
 
-  
-  // const openDetails = (e) => {
-  //   console.log("Open Details Box!");
-  // };
-
   return (
     <div className="task">
       <div className="task-description">
@@ -65,10 +58,7 @@ const Task = ({ value, editTaskBox }) => {
             showDescription(value.id);
           }}>
           <div className="task-heading">{value.title}</div>
-
-          {/* <span className="time-left">
-            <b>Time Left:</b> 12hr
-          </span> */}
+          
         </div>
       </div>
       <div className="task-category">

@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import DashboardPage from "./components/DashboardPage";
 import Footer from "./components/Footer";
 import React from "react";
-
+// For Notifications
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
@@ -14,18 +14,21 @@ import About from "./components/About";
 const FetchedContext = createContext();
 
 function App() {
-
+// Setting Tasks
   const [tasks, setTasks] = useState([]);
+  // For Rendering Task Description
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [descriptionData, setDescriptionData] = useState({})
 
   // Showing UserAccount and Notification
   const [openUserAccount, setOpenUserAccount] = useState(false);
 
+  // Setting Data to Local Storage
   const setDataToLocalStorage = (data) => {
     localStorage.setItem("tasks", JSON.stringify(data));
   };
 
+  // API request to Fetch Tasks
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,7 +36,6 @@ function App() {
           "https://jsonplaceholder.typicode.com/todos"
         );
         const data = await response.json();
-        // console.log("Data From API:", data);
         setTasks(data);
         setDataToLocalStorage(data);
       } catch (error) {
@@ -41,18 +43,10 @@ function App() {
         console.log("Error Fetching Tasks!", error);
       }
     };
-
+    // Storing Task in LOcal storage, if Doesnt exists then creating
     const storedTasks = JSON.parse(localStorage.getItem("tasks"))
-    console.log("Stored Tasks after assigning", storedTasks,storedTasks.length);
     if (storedTasks && storedTasks.length>0) {
       setTasks(storedTasks);
-      console.log(storedTasks,"stored tasks", storedTasks.length, "Stored Task At 0", storedTasks[0],"Stored Task At 1",storedTasks[1]);
-      console.log("Type of", typeof(storedTasks))
-      console.log("Type of 0", typeof(storedTasks[0]))
-      console.log("Type of 1", typeof(storedTasks[1]))
-      console.log("Type of 2", typeof(storedTasks[2]))
-
-
     } else {
       fetchData();
     }
@@ -61,49 +55,24 @@ function App() {
 
   // Deleting Task
   const deleteTask = (id) => {
-    console.log("Delete Task");
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
       method: "DELETE",
     })
     let updatedTask = tasks.filter((task)=>task.id !== id);
     localStorage.setItem("tasks", JSON.stringify(updatedTask));
     setTasks(JSON.parse(localStorage.getItem('tasks')))
-    console.log("Deleted");
     notify("Task Deleted SuccessFully!","success")
     isDescriptionOpen && setIsDescriptionOpen(false);
   };
 
-  // const editTask = ()=>{
-    
-  // }
-
-  // const [pending, setPending] = useState(0);
-  // const [completed, setCompleted] = useState(0);
-
-  // useEffect(() => {
-  //   if (tasks) {
-  //     const completed = tasks.filter((task) => task.completed === true);
-  //     const pending = tasks.filter((task) => task.completed !== true);
-
-  //     setCompleted(completed);
-  //     setPending(pending);
-
-  //     // console.log("Pending:",pending);
-  //     // console.log("Completed:", completed);
-  //   }
-  // }, [tasks]);
-
-
+  // Function to show description
     const showDescription = (id)=>{
-      console.log("Description ID", id);
-      console.log("Open Dessc");
       setIsDescriptionOpen(!isDescriptionOpen)
       const updatedDesc = tasks.find((task) => task.id === id);
       setDescriptionData(updatedDesc)
-      console.log("Description Data:", descriptionData);
     }
 
-
+// Configured Notification
     const notify = (msg,type) => {
       if(type==="success"){
         toast.success(msg);
@@ -112,6 +81,7 @@ function App() {
       }
     }
   return (
+    // Using Context API for data transfer
     <FetchedContext.Provider
       value={{
         tasks,

@@ -7,7 +7,6 @@ import { faBell, faBellSlash} from "@fortawesome/free-regular-svg-icons";
 const EditBox = (props) => {
 
   const { tasks, setTasks,notify,setDescriptionData,isDescriptionOpen } = useContext(FetchedContext);
-  console.log("Props Received!", props);
 
   const {
     editData,
@@ -19,7 +18,6 @@ const EditBox = (props) => {
   // Editing Task and Updating
   const editTask = (e) => {
     e.preventDefault();
-    console.log("This is Editted Data as we were assigning it while changing data:", editData);
 
     fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
       method: "PUT",
@@ -162,9 +160,6 @@ const EditBox = (props) => {
           </div>
 
           <div className="alert-category">
-            {/* <div className="alert-box">
-              <FontAwesomeIcon icon={faBell} />
-            </div> */}
 
 <div className={`alert-box ${editData.alert && "active-alert"}` } onClick={()=>setEditData(() => ({ ...editData, alert: !editData.alert }))}>
               {editData.alert?<FontAwesomeIcon icon={faBell}/>:<FontAwesomeIcon icon={faBellSlash} />}

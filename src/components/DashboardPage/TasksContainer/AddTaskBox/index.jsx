@@ -41,7 +41,6 @@ const AddTaskBox = ({ taskBox, setTaskBox }) => {
       .then((response) => response.json())
       .then((newTask) => {
         newTask.id = Date.now();
-        console.log("New Task:", newTask);
         const updatedTasks = [newTask, ...tasks];
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
         setTasks(updatedTasks);

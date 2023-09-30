@@ -16,7 +16,6 @@ const DashboardPage = () => {
   const { openUserAccount, setOpenUserAccount, tasks } =
     useContext(FetchedContext);
 
-  console.log("Dash Inside Dashboard Page", isDash);
   return (
     <>
       <DashContext.Provider value={{ isDash, setIsDash }}>

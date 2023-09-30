@@ -11,12 +11,9 @@ const DashNav = () => {
 
   const dashClick = ()=>{
     setIsDash(true)
-    console.log(isDash);
   }
   const taskClick = ()=>{
     setIsDash(false)
-    console.log(isDash);
-
   }
   return (
     <div className="dash-nav">

@@ -5,13 +5,10 @@ import { FetchedContext } from "../../../App";
 
 const DashboardContainer = () => {
   const {tasks} = useContext(FetchedContext);
-  console.log("From Dashboard COMTAINER");
-  // const {tasks, pending, completed} = useContext(FetchedContext);
 
   let completed = tasks.filter(task => task.completed).length;
   let pending = tasks.filter(task => !task.completed).length;
 
-  console.log("Inside dashboard Container ");
   return (
     <div className="dashboard-container" id="dash-container">
       <div className="dash-heading">
