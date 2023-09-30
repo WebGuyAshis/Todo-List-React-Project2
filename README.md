@@ -29,7 +29,21 @@ The React ToDo App is a user-friendly task management application designed to he
 https://webguyashis-react-todo-project.netlify.app/
 
 ## Screenshots
+### Desktop View
+![home](https://github.com/WebGuyAshis/Todo-List-React-Project2/assets/126752768/5bfe363a-883a-4a4b-98c1-a0f416da7fb4)
 
+![dash](https://github.com/WebGuyAshis/Todo-List-React-Project2/assets/126752768/39da033a-43da-4c63-b992-c7b7a9aab9c3)
+
+![Task](https://github.com/WebGuyAshis/Todo-List-React-Project2/assets/126752768/a8939b0b-34ef-4a6e-8188-52ab1457b463)
+
+![Edit Tasks](https://github.com/WebGuyAshis/Todo-List-React-Project2/assets/126752768/9798d3cd-9ac6-41f8-8797-d573bb329140)
+
+### Mobile View
+![IMG-20231001-WA0000](https://github.com/WebGuyAshis/Todo-List-React-Project2/assets/126752768/65c6685a-46c5-4f96-9355-1fca619109c6)
+
+![Screenshot_2023-10-01-03-12-05-480_com android chrome](https://github.com/WebGuyAshis/Todo-List-React-Project2/assets/126752768/abca6e28-4259-4113-8df7-cc876aa895c9)
+
+![IMG-20231001-WA0001](https://github.com/WebGuyAshis/Todo-List-React-Project2/assets/126752768/5410eea5-61a5-418d-b62e-b9fd68c72cb9)
 
 # Getting Started with Create React App
 
