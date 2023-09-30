@@ -10,7 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
 import "react-toastify/dist/ReactToastify.min.css";
 import About from "./components/About";
-import { type } from "@testing-library/user-event/dist/type";
 
 const FetchedContext = createContext();
 

@@ -72,7 +72,7 @@ const Task = ({ value, editTaskBox }) => {
         </div>
       </div>
       <div className="task-category">
-        {value.category ? value.category : "Personal"}
+        {value.category ? value.category : "Not Set"}
       </div>
       <div className="edit-del-icons">
         <FontAwesomeIcon

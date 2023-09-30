@@ -14,24 +14,18 @@ const TasksContainer = () => {
   const [taskStatus, setTaskStaus] = useState("all");
 
   // Accessing Data Compming from provider
-  const { tasks, setTasks, isDescriptionOpen } = useContext(FetchedContext);
+  const { tasks, isDescriptionOpen } = useContext(FetchedContext);
 
   // setting up Filter Task Category for work events school
 
   const [filterTaskCategory, setFilterTaskCategory] = useState("all");
-  // const showAllTasks = ()=>{
-  //   setTaskStaus("all");
+  // Checking Active Criteria for tasks render
+  // const [isSearchActive, setIsSearchActive] = useState(false);
+  // const [isTaskCategoryActive, setisTaskCategoryActive] = useState(false);
+  // const [isTaskCompleteStatusActive, SetIsTaskCompleteStatusActive] =
+  //   useState(false);
 
-  // }
-
-  // const showPending = () => {
-  //   setTaskStaus("pending");
-  // };
-
-  // const showCompleted = () => {
-  //   setTaskStaus("completed");
-  // };
-  const [taskCategoryBox, setTaskCategoryBox] = useState(false)
+  const [taskCategoryBox, setTaskCategoryBox] = useState(false);
   const [editBox, setEditBox] = useState(false);
   const [editData, setEditData] = useState({
     id: "",
@@ -69,7 +63,8 @@ const TasksContainer = () => {
     if (search === "") {
       console.log("Search Field is empty");
       setSearchedTask(null);
-      setTasks(tasks);
+      setTaskStaus("all");
+      setFilterTaskCategory("all");
       // return;
     } else {
       const regex = new RegExp(search, "i");
@@ -77,6 +72,8 @@ const TasksContainer = () => {
 
       console.log("Searched Tasks:", searchedTasks);
       setSearchedTask(searchedTasks);
+      setTaskStaus("all");
+      setFilterTaskCategory("all");
       // setTasks(searchedTasks)
     }
   };
@@ -101,66 +98,93 @@ const TasksContainer = () => {
   let month = monthsName[monthIndex];
   let year = date.getFullYear();
 
+  // if(isSearchActive){
+
+  // }
+
+  const settingCategory = (category) => {
+    setFilterTaskCategory(category);
+    setSearchedTask(null);
+    setTaskStaus("all");
+  };
+
+  const settingStatus = (stat) => {
+    setTaskStaus(stat);
+    setFilterTaskCategory("all");
+    setSearchedTask(null);
+  };
+
   return (
     <div className="tasks-main-container">
-      <FontAwesomeIcon icon={faEllipsisVertical} className="three-dot-menu" onClick={()=>{setTaskCategoryBox(true)}}/>
+      <FontAwesomeIcon
+        icon={faEllipsisVertical}
+        className="three-dot-menu"
+        onClick={() => {
+          setTaskCategoryBox(true);
+        }}
+      />
       {/* Open Category box */}
-      {taskCategoryBox && 
-      <div className="task-category-background" onClick={()=>{setTaskCategoryBox(false)}}>
-      <div className="tasks-category">
+      {taskCategoryBox && (
         <div
-          className={`tasks-category-item ${
-            filterTaskCategory === "all" ? "active-item" : ""
-          }`}
+          className="task-category-background"
           onClick={() => {
-            setFilterTaskCategory("all");
+            setTaskCategoryBox(false);
           }}
         >
-          All
+          <div className="tasks-category">
+            <div
+              className={`tasks-category-item ${
+                filterTaskCategory === "all" ? "active-item" : ""
+              }`}
+              onClick={() => {
+                settingCategory("all");
+              }}
+            >
+              All
+            </div>
+            <div
+              className={`tasks-category-item ${
+                filterTaskCategory === "Personal" ? "active-item" : ""
+              }`}
+              onClick={() => {
+                settingCategory("Personal");
+              }}
+            >
+              Personal
+            </div>
+            <div
+              className={`tasks-category-item ${
+                filterTaskCategory === "Work" ? "active-item" : ""
+              }`}
+              onClick={() => {
+                settingCategory("Work");
+              }}
+            >
+              Work
+            </div>
+            <div
+              className={`tasks-category-item ${
+                filterTaskCategory === "School" ? "active-item" : ""
+              }`}
+              onClick={() => {
+                settingCategory("School");
+              }}
+            >
+              School
+            </div>
+            <div
+              className={`tasks-category-item ${
+                filterTaskCategory === "Events" ? "active-item" : ""
+              }`}
+              onClick={() => {
+                settingCategory("Events");
+              }}
+            >
+              Events
+            </div>
+          </div>
         </div>
-        <div
-          className={`tasks-category-item ${
-            filterTaskCategory === "Personal" ? "active-item" : ""
-          }`}
-          onClick={() => {
-            setFilterTaskCategory("Personal");
-          }}
-        >
-          Personal
-        </div>
-        <div
-          className={`tasks-category-item ${
-            filterTaskCategory === "Work" ? "active-item" : ""
-          }`}
-          onClick={() => {
-            setFilterTaskCategory("Work");
-          }}
-        >
-          Work
-        </div>
-        <div
-          className={`tasks-category-item ${
-            filterTaskCategory === "School" ? "active-item" : ""
-          }`}
-          onClick={() => {
-            setFilterTaskCategory("School");
-          }}
-        >
-          School
-        </div>
-        <div
-          className={`tasks-category-item ${
-            filterTaskCategory === "Events" ? "active-item" : ""
-          }`}
-          onClick={() => {
-            setFilterTaskCategory("Events");
-          }}
-        >
-          Events
-        </div>
-      </div>
-      </div>
-      }
+      )}
 
       <div className="heading">
         <div className="heading-tasks">Tasks</div>
@@ -241,7 +265,7 @@ const TasksContainer = () => {
             className={`all-btn ${taskStatus === "all" ? "active-item" : ""}`}
             onClick={() => {
               console.log("Status:", taskStatus);
-              setTaskStaus("all");
+              settingStatus("all");
             }}
           >
             All
@@ -252,7 +276,7 @@ const TasksContainer = () => {
             }`}
             onClick={() => {
               console.log("Status:", taskStatus);
-              setTaskStaus("pending");
+              settingStatus("pending");
             }}
           >
             Pending
@@ -263,7 +287,7 @@ const TasksContainer = () => {
             }`}
             onClick={() => {
               console.log("Status:", taskStatus);
-              setTaskStaus("completed");
+              settingStatus("completed");
             }}
           >
             Completed
@@ -311,7 +335,7 @@ const TasksContainer = () => {
                 );
               })} */}
 
-        {tasks && taskStatus === "pending"
+        {/* {tasks && taskStatus === "pending"
           ? tasks
               .filter((task) => !task.completed)
               .map((task) => {
@@ -331,7 +355,33 @@ const TasksContainer = () => {
               return (
                 <Task key={task.id} value={task} editTaskBox={editTaskBox} />
               );
-            })}
+            })} */}
+
+        {searchedTask
+          ? searchedTask.map((task) => (
+              <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+            ))
+          : taskStatus === "pending"
+          ? tasks
+              .filter((task) => taskStatus === "pending" && !task.completed)
+              .map((task) => (
+                <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+              ))
+          : taskStatus === "completed"
+          ? tasks
+              .filter((task) => taskStatus === "completed" && task.completed)
+              .map((task) => (
+                <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+              ))
+          : filterTaskCategory !== "all"
+          ? tasks
+              .filter((task) => task.category === filterTaskCategory)
+              .map((task) => (
+                <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+              ))
+          : tasks.map((task) => (
+              <Task key={task.id} value={task} editTaskBox={editTaskBox} />
+            ))}
       </div>
 
       <div
